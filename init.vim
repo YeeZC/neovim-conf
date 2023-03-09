@@ -249,6 +249,11 @@ map! <c-j> <down>
 map! <c-k> <up>
 map! <c-l> <right>
 
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" notify
 function! s:DiagnosticNotify() abort
   let l:info = get(b:, 'coc_diagnostic_info', {})
   if empty(l:info) | return '' | endif
@@ -316,9 +321,6 @@ highlight link NotifyTRACEBody Normal
 autocmd User CocNvimInit call s:InitCoc()
 autocmd User CocDiagnosticChange call s:DiagnosticNotify()
 autocmd User CocStatusChange call s:StatusNotify()
-" airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
 
 lua << EOF
 vim.notify = require('notify')
@@ -326,7 +328,7 @@ vim.notify = require('notify')
 local coc_status_record = {}
 
 function coc_status_notify(msg, level)
-  local notify_opts = { title = "LSP Status", timeout = 500, hide_from_history = true, on_close = reset_coc_status_record }
+  local notify_opts = { title = "LSP Status", timeout = 500, hide_from_history = true, on_close = reset_coc_status_record, icon='✹' }
   -- if coc_status_record is not {} then add it to notify_opts to key called "replace"
   if coc_status_record ~= {} then
     notify_opts["replace"] = coc_status_record.id
@@ -341,7 +343,7 @@ end
 local coc_diag_record = {}
 
 function coc_diag_notify(msg, level)
-  local notify_opts = { title = "LSP Diagnostics", timeout = 500, on_close = reset_coc_diag_record }
+  local notify_opts = { title = "LSP Diagnostics", timeout = 500, on_close = reset_coc_diag_record, icon='✹' }
   -- if coc_diag_record is not {} then add it to notify_opts to key called "replace"
   if coc_diag_record ~= {} then
     notify_opts["replace"] = coc_diag_record.id
@@ -354,7 +356,7 @@ function reset_coc_diag_record(window)
 end
 
 function coc_notify(msg, level)
-  local notify_opts = { title = "LSP Message", timeout = 500 }
+  local notify_opts = { title = "LSP Message", timeout = 500, icon='✹' }
   vim.notify(msg, level, notify_opts)
 end
 EOF
