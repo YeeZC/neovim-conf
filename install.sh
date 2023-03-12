@@ -6,5 +6,5 @@ ln -s $dir/coc-settings.json $HOME/.config/nvim/coc-settings.json
 mkdir -p $HOME/.vim/after/autoload/coc
 ln -s $dir/.vim/after/autoload/coc/ui.vim $HOME/.vim/after/autoload/coc/ui.vim
 mkdir -p $HOME/lua/plugin/
-ln -s $dir/lua/plugin/nvim-tree.lua $HOME/lua/plugin/nvim-tree.lua
+ln -s $dir/lua/plugin/nvim-tree.lua $HOME/.config/nvim/lua/plugin/nvim-tree.lua
 
