@@ -195,7 +195,7 @@ let g:ale_linters = {
     \ }
 
 " coc
-let g:coc_global_extensions = ['coc-git', 'coc-go', 'coc-json', 'coc-yaml']
+let g:coc_global_extensions = ['coc-git', 'coc-go', 'coc-json', 'coc-yaml', 'coc-python']
 " use <tab> to trigger completion and navigate to the next complete item
 function! CheckBackspace() abort
   let col = col('.') - 1
