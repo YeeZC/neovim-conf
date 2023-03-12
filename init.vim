@@ -60,7 +60,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
+Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-commentary'
 Plug 'spf13/vim-autoclose'
@@ -159,9 +161,9 @@ map <leader>b :Buffers<CR>
 let g:fzf_action = { 'ctrl-e': 'edit' }
 " 用 leader+ag 搜索当前 cursor 下单词 see: https://github.com/junegunn/fzf.vim/issues/50
 nnoremap <silent> <Leader>q :Ag <C-R><C-W><CR>
-
-nnoremap <leader>v :NERDTreeFind<cr>
-nnoremap <leader>g :NERDTreeToggle<cr>
+lua require("plugin/nvim-tree")
+nnoremap <leader>v :NvimTreeFocus<cr>
+nnoremap <leader>g :NvimTreeToggle<cr>
 
 nnoremap <leader>t :TagbarToggle<cr>
 nmap ss <Plug>(easymotion-s2)
