@@ -89,7 +89,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'APZelos/blamer.nvim'
 Plug 'MattesGroeger/vim-bookmarks'
-
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'scrooloose/vim-slumlord'
 Plug 'pseewald/vim-anyfold'
