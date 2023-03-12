@@ -6,10 +6,11 @@ if [ -e "$HOME/.config/nvim/init.vim" ]
 then
     rm -rf $HOME/.config/nvim/init.vim
     rm -rf $HOME/.config/nvim/coc-settings.json
+    rm -rf $HOME/.config/nvim/lua
 fi
 ln -s $dir/init.vim $HOME/.config/nvim/init.vim
 ln -s $dir/coc-settings.json $HOME/.config/nvim/coc-settings.json
-
+ln -s $dir/lua $HOME/.config/nvim/lua
 mkdir -p $HOME/.vim/after/autoload/coc
 if [ -e "$HOME/.vim/after/autoload/coc/ui.vim" ]
 then
