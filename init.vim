@@ -54,7 +54,7 @@ set modifiable
 call plug#begin('~/.vim/plugged')
 Plug 'rcarriga/nvim-notify'
 Plug 'luochen1990/rainbow'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 " golang
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
