@@ -110,19 +110,6 @@ let g:rehash256 = 1
 let g:molokai_original = 1
 colorscheme molokai
 set termguicolors
-" colorscheme solarized8
-" let g:github_function_style = "italic"
-" let g:github_sidebars = ["qf", "vista_kind", "terminal", "packer"]
-
-" Change the "hint" color to the "orange" color, and make the "error" color bright red
-" let g:github_colors = {
-"   \ 'hint': 'orange',
-"   \ 'error': '#ff0000'
-"" \ }
-
-" Load the colorscheme
-" colorscheme github_dark
-
 
 " vim-go
 let g:go_fmt_command = 'goimports'
@@ -250,7 +237,7 @@ map! <c-h> <left>
 map! <c-j> <down>
 map! <c-k> <up>
 map! <c-l> <right>
-
+lua require('plugin/notify')
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -324,41 +311,4 @@ autocmd User CocNvimInit call s:InitCoc()
 autocmd User CocDiagnosticChange call s:DiagnosticNotify()
 autocmd User CocStatusChange call s:StatusNotify()
 
-lua << EOF
-vim.notify = require('notify')
 
-local coc_status_record = {}
-
-function coc_status_notify(msg, level)
-  local notify_opts = { title = "LSP Status", timeout = 500, hide_from_history = true, on_close = reset_coc_status_record, icon='ⓘ' }
-  -- if coc_status_record is not {} then add it to notify_opts to key called "replace"
-  if coc_status_record ~= {} then
-    notify_opts["replace"] = coc_status_record.id
-  end
-  coc_status_record = vim.notify(msg, level, notify_opts)
-end
-
-function reset_coc_status_record(window)
-  coc_status_record = {}
-end
-
-local coc_diag_record = {}
-
-function coc_diag_notify(msg, level)
-  local notify_opts = { title = "LSP Diagnostics", timeout = 500, on_close = reset_coc_diag_record, icon='ⓘ' }
-  -- if coc_diag_record is not {} then add it to notify_opts to key called "replace"
-  if coc_diag_record ~= {} then
-    notify_opts["replace"] = coc_diag_record.id
-  end
-  coc_diag_record = vim.notify(msg, level, notify_opts)
-end
-
-function reset_coc_diag_record(window)
-  coc_diag_record = {}
-end
-
-function coc_notify(msg, level)
-  local notify_opts = { title = "LSP Message", timeout = 500, icon='ⓘ' }
-  vim.notify(msg, level, notify_opts)
-end
-EOF
