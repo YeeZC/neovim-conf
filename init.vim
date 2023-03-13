@@ -1,4 +1,3 @@
-      
 let mapleader = ","
 set nocompatible
 filetype on
@@ -16,7 +15,6 @@ set cursorline
 set whichwrap+=<,>,h,l
 set ttimeoutlen=0
 set virtualedit=block,onemore
-
 set autoindent
 set cindent
 set cinoptions=g0,:0,N-s,(0
@@ -31,22 +29,17 @@ set nowrap
 set backspace=2
 set sidescroll=10
 set nofoldenable
-
 set wildmenu
 set completeopt-=preview
-
 set hlsearch
 set incsearch
 set ignorecase
-
 set nobackup
 set noswapfile
 set autoread
 set autowrite
 set confirm
-
 set encoding=utf-8
-
 set scrolljump=5
 set scrolloff=3
 set modifiable
@@ -82,23 +75,17 @@ Plug 'fatih/molokai'
 Plug 'MattesGroeger/vim-bookmarks'
 "Plug 'projekt0n/github-nvim-theme', { 'tag': 'v0.0.7' }
 Plug 'voldikss/vim-floaterm'
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 Plug 'mileszs/ack.vim'
-
 Plug 'nathanaelkane/vim-indent-guides'
-
 Plug 'APZelos/blamer.nvim'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'ryanoasis/vim-devicons'
-
 Plug 'scrooloose/vim-slumlord'
 Plug 'pseewald/vim-anyfold'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'machakann/vim-sandwich'
-
 call plug#end()
 let g:python3_host_prog = "/usr/bin/python3"
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
@@ -310,5 +297,3 @@ highlight link NotifyTRACEBody Normal
 autocmd User CocNvimInit call s:InitCoc()
 autocmd User CocDiagnosticChange call s:DiagnosticNotify()
 autocmd User CocStatusChange call s:StatusNotify()
-
-
