@@ -1,0 +1,8 @@
+require('basic')
+require('plugins')
+require('keymap')
+require('theme')
+require('plugin/vim-go')
+require('plugin/ale')
+require('plugin/coc')
+require('plugin/notify')
