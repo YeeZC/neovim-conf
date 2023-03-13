@@ -1,8 +1,15 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
 end
+
+local packer_bootstrap = ensure_packer()
 
 return require('packer').startup({
     function()
@@ -23,7 +30,6 @@ return require('packer').startup({
         use 'haya14busa/incsearch.vim'
         use 'junegunn/vim-slash'
         use 'Shougo/echodoc.vim'
-        use 'mileszs/ack.vim'
         use 'dense-analysis/ale'
         use 'junegunn/vim-easy-align'
         use 'easymotion/vim-easymotion'
@@ -31,7 +37,6 @@ return require('packer').startup({
         use {'junegunn/fzf', dir='~/.fzf', run = './install --all' }
         use 'junegunn/fzf.vim'
         use 'fatih/molokai'
-        use 'MattesGroeger/vim-bookmarks'
         use 'voldikss/vim-floaterm'
         use {'neoclide/coc.nvim', branch = 'release'}
         use 'mileszs/ack.vim'
