@@ -13,7 +13,8 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup({
     function()
-        use 'rcarriga/nvim-notify'
+        use 'wbthomason/packer.nvim'
+	use 'rcarriga/nvim-notify'
         use 'luochen1990/rainbow'
         use 'vim-airline/vim-airline'
         use 'vim-airline/vim-airline-themes'
