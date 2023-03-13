@@ -43,7 +43,6 @@ return require('packer').startup({
         use 'nathanaelkane/vim-indent-guides'
         use 'APZelos/blamer.nvim'
         use 'MattesGroeger/vim-bookmarks'
-        use 'ryanoasis/vim-devicons'
         use 'scrooloose/vim-slumlord'
         use 'pseewald/vim-anyfold'
         use 'mhinz/vim-startify'
