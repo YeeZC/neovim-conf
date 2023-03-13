@@ -1,14 +1,14 @@
 #!/bin/bash
 dir=$(cd `dirname $0`; pwd)
 echo "原地址为$dir"
-mkdir -p $HOME/.config/nvim
-if [ -e "$HOME/.config/nvim/init.lua" ] | [ -e "$HOME/.config/nvim/init.vim"]
+if [ -e "$HOME/.config/nvim" ]
 then
     rm -rf $HOME/.config/nvim/init.vim
     rm -rf $HOME/.config/nvim/init.lua
     rm -rf $HOME/.config/nvim/coc-settings.json
     rm -rf $HOME/.config/nvim/lua
 fi
+mkdir -p ~/.config/nvim
 ln -s $dir/init.lua $HOME/.config/nvim/init.lua
 ln -s $dir/coc-settings.json $HOME/.config/nvim/coc-settings.json
 ln -s $dir/lua $HOME/.config/nvim
