@@ -5,7 +5,7 @@ vim.cmd([[
     " 用 leader+ag 搜索当前 cursor 下单词 see: https://github.com/junegunn/fzf.vim/issues/50
     nnoremap <silent> <Leader>q :Ag <C-R><C-W><CR>
     lua require("plugin/nvim-tree")
-    nnoremap <leader>v :NvimTreeFocus<cr>
+    nnoremap <leader>v :NvimTreeFindFileToggle<cr>
     nnoremap <leader>g :NvimTreeToggle<cr>
 
     nnoremap <leader>t :TagbarToggle<cr>
