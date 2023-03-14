@@ -37,7 +37,7 @@ vim.api.nvim_set_keymap('i', '<C-l>', '<right>', opts)
 
 -- vim-go
 vim.api.nvim_set_keymap('i', '<C-g>', '<esc>:<C-u>:GoDeclsDir<cr>', opts)
-vim.api.nvim_set_keymap('n', '<C-g>', ':GoDeclsDir', opts)
+vim.api.nvim_set_keymap('n', '<C-g>', ':GoDeclsDir<cr>', opts)
 
 -- coc
 vim.api.nvim_set_keymap('n', '[g', '<Plug>(coc-diagnostic-prev)', opts)
