@@ -12,6 +12,7 @@ then
     rm -rf $HOME/.config/nvim/init.lua
     rm -rf $HOME/.config/nvim/coc-settings.json
     rm -rf $HOME/.config/nvim/lua
+    rm -rf $HOME/.config/nvim/plugin/packer_compiled.lua
 fi
 mkdir -p ~/.config/nvim/lua/plugin
 ln -s $dir/init.vim $HOME/.config/nvim/init.vim
