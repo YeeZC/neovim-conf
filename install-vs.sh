@@ -13,10 +13,12 @@ then
     rm -rf $HOME/.config/nvim/coc-settings.json
     rm -rf $HOME/.config/nvim/lua
 fi
-mkdir -p ~/.config/nvim
+mkdir -p ~/.config/nvim/lua/plugin
 ln -s $dir/init.vim $HOME/.config/nvim/init.vim
 ln -s $dir/coc-settings.json $HOME/.config/nvim/coc-settings.json
-ln -s $dir/lua $HOME/.config/nvim
+# ln -s $dir/lua $HOME/.config/nvim
+ln -s $dir/lua/plugin/nvim-tree.lua $HOME/.config/nvim/lua/plugin/nvim-tree.lua
+ln -s $dir/lua/plugin/notify.lua $HOME/.config/nvim/lua/plugin/notify.lua
 mkdir -p $HOME/.vim/after/autoload/coc
 if [ -e "$HOME/.vim/after/autoload/coc/ui.vim" ]
 then
