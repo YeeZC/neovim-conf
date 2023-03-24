@@ -49,6 +49,7 @@ return require('packer').startup({
         use 'mhinz/vim-startify'
         use 'tpope/vim-surround'
         use 'machakann/vim-sandwich'
+        use 'github/copilot.vim'
     end,
     config = {
         ensure_dependencies = true,
