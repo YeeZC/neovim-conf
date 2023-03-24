@@ -14,7 +14,8 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup({
     function()
         use 'wbthomason/packer.nvim'
-	    use 'rcarriga/nvim-notify'
+        use 'tpope/vim-fugitive'
+    	use 'rcarriga/nvim-notify'
         use 'luochen1990/rainbow'
         use 'vim-airline/vim-airline'
         use 'vim-airline/vim-airline-themes'
@@ -50,6 +51,7 @@ return require('packer').startup({
         use 'tpope/vim-surround'
         use 'machakann/vim-sandwich'
         use 'github/copilot.vim'
+        use 'sainnhe/sonokai'
     end,
     config = {
         ensure_dependencies = true,
