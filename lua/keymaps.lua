@@ -53,6 +53,10 @@ vim.api.nvim_set_keymap('n', 'sn', '<Plug>(ale_next_wrap)', opts)
 vim.api.nvim_set_keymap('n', '<leader>d', ':ALEDetail<cr>', opts)
 vim.api.nvim_set_keymap('n', '<leader>l', ':ALEToggle<cr>', opts)
 
+-- tabs
+vim.api.nvim_set_keymap('n', '[t', ':tabprevious<cr>', opts)
+vim.api.nvim_set_keymap('n', ']t', ':tabnext<cr>', opts)
+
 vim.cmd([[
     let g:fzf_action = { 'ctrl-e': 'edit' }
 ]])

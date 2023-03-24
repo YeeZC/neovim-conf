@@ -53,7 +53,7 @@ return require('packer').startup({
     config = {
         ensure_dependencies = true,
         plugin_package = 'packer',
-        max_jobs = nil,
+        max_jobs = 10,
         auto_clean = true,
         compile_on_sync = true,
         disable_commands = false,
@@ -77,7 +77,7 @@ return require('packer').startup({
                 submodules = 'submodule update --init --recursive --progress'
             },
             depth = 1,
-            clone_timeout = 60,
+            clone_timeout = 3600,
             default_url_format = 'https://github.com/%s'
         },
         display = {
