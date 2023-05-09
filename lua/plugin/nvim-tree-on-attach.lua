@@ -43,7 +43,7 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'a',     api.fs.create,                         opts('Create'))
   vim.keymap.set('n', 'bmv',   api.marks.bulk.move,                   opts('Move Bookmarked'))
   vim.keymap.set('n', 'B',     api.tree.toggle_no_buffer_filter,      opts('Toggle No Buffer'))
-  vim.keymap.set('n', 'c',     api.fs.copy.node,                      opts('Copy'))
+--  vim.keymap.set('n', 'c',     api.fs.copy.node,                      opts('Copy'))
   vim.keymap.set('n', 'C',     api.tree.toggle_git_clean_filter,      opts('Toggle Git Clean'))
   vim.keymap.set('n', '[c',    api.node.navigate.git.prev,            opts('Prev Git'))
   vim.keymap.set('n', ']c',    api.node.navigate.git.next,            opts('Next Git'))
@@ -87,6 +87,16 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'c', function()
     local node = api.tree.get_node_under_cursor()
     -- your code goes here
+    local file_src = node['absolute_path']
+    -- The args of input are {prompt}, {default}, {completion}
+    -- Read in the new file path using the existing file's path as the baseline.
+    local file_out = vim.fn.input("COPY TO: ", file_src, "file")
+    -- Create any parent dirs as required
+    local dir = vim.fn.fnamemodify(file_out, ":h")
+    vim.fn.system { 'mkdir', '-p', dir }
+    -- Copy the file
+    vim.fn.system { 'cp', '-R', file_src, file_out }
+
   end, opts('copy_file_to'))
 
 
