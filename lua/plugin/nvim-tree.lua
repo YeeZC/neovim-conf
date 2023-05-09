@@ -45,6 +45,7 @@ local WIDTH_RATIO = 0.5   -- You can change this too
 
 -- OR setup with some options
 require("nvim-tree").setup({
+  on_attach = on_attach,
   sort_by = "case_sensitive",
   sync_root_with_cwd = true,
   hijack_cursor = true,
@@ -73,11 +74,11 @@ require("nvim-tree").setup({
   },
   view = {
     adaptive_size = false,
-    mappings = {
-        list = {
-            {key="c", action = "copy_file_to", action_cb=copy_file_to}
-        }
-    },
+--    mappings = {
+--        list = {
+--            {key="c", action = "copy_file_to", action_cb=copy_file_to}
+--        }
+--    },
 }})
 
 local function opts(desc)
