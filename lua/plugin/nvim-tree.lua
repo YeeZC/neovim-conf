@@ -22,12 +22,12 @@ local function on_attach(bufnr)
   vim.keymap.set('n', '<C-e>', api.node.open.replace_tree_buffer,     opts('Open: In Place'))
   vim.keymap.set('n', '<C-k>', api.node.show_info_popup,              opts('Info'))
   vim.keymap.set('n', '<C-r>', api.fs.rename_sub,                     opts('Rename: Omit Filename'))
-  vim.keymap.set('n', '<C-t>', api.node.open.tab,                     opts('Open: New Tab'))
-  vim.keymap.set('n', '<C-v>', api.node.open.vertical,                opts('Open: Vertical Split'))
-  vim.keymap.set('n', '<C-x>', api.node.open.horizontal,              opts('Open: Horizontal Split'))
+--  vim.keymap.set('n', '<C-t>', api.node.open.tab,                     opts('Open: New Tab'))
+--  vim.keymap.set('n', '<C-v>', api.node.open.vertical,                opts('Open: Vertical Split'))
+--  vim.keymap.set('n', '<C-x>', api.node.open.horizontal,              opts('Open: Horizontal Split'))
   vim.keymap.set('n', '<BS>',  api.node.navigate.parent_close,        opts('Close Directory'))
   vim.keymap.set('n', '<CR>',  api.node.open.edit,                    opts('Open'))
-  vim.keymap.set('n', '<Tab>', api.node.open.preview,                 opts('Open Preview'))
+--  vim.keymap.set('n', '<Tab>', api.node.open.preview,                 opts('Open Preview'))
   vim.keymap.set('n', '>',     api.node.navigate.sibling.next,        opts('Next Sibling'))
   vim.keymap.set('n', '<',     api.node.navigate.sibling.prev,        opts('Previous Sibling'))
   vim.keymap.set('n', '.',     api.node.run.cmd,                      opts('Run Command'))
@@ -70,6 +70,12 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'Y',     api.fs.copy.relative_path,             opts('Copy Relative Path'))
   vim.keymap.set('n', '<2-LeftMouse>',  api.node.open.edit,           opts('Open'))
   vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
+  vim.keymap.set('n', '<2-Tab>', api.node.open.preview,                 opts('Open Preview'))
+  vim.keymap.set('n', 'V', api.node.open.vertical,                opts('Open: Vertical Split'))
+  vim.keymap.set('n', 'X', api.node.open.horizontal, opts('Open: Horizontal Split'))
+  vim.keymap.set('n', 'T', api.node.open.tab,                     opts('Open: New Tab'))
+
+
   -- END_DEFAULT_ON_ATTACH
 
 
@@ -90,9 +96,8 @@ local function on_attach(bufnr)
     vim.fn.system { 'cp', '-R', file_src, file_out }
 
   end, opts('copy_file_to'))
-
-
 end
+
 local function open_nvim_tree(data)
   -- buffer is a directory
   local directory = vim.fn.isdirectory(data.file) == 1
@@ -146,11 +151,6 @@ require("nvim-tree").setup({
   },
   view = {
     adaptive_size = false,
---    mappings = {
---        list = {
---            {key="c", action = "copy_file_to", action_cb=copy_file_to}
---        }
---    },
 }})
 
 local function opts(desc)
