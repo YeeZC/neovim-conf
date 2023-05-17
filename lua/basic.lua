@@ -1,7 +1,6 @@
 vim.cmd([[
     set t_Co=256
     set backspace=2
-    let mapleader = ","
     filetype on
     filetype plugin on
     filetype indent on

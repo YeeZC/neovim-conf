@@ -20,8 +20,8 @@ return require('packer').startup({
         use 'vim-airline/vim-airline'
         use 'vim-airline/vim-airline-themes'
         use {'fatih/vim-go',  run= ':GoUpdateBinaries' }
-        use 'majutsushi/tagbar'
-        use 'nvim-tree/nvim-web-devicons'
+        -- use 'majutsushi/tagbar'
+        -- use 'nvim-tree/nvim-web-devicons'
         use {'nvim-tree/nvim-tree.lua',requires = {
             'nvim-tree/nvim-web-devicons',
           }}
@@ -38,9 +38,9 @@ return require('packer').startup({
         use 'flazz/vim-colorschemes'
         use {'junegunn/fzf', dir='~/.fzf', run = './install --all' }
         use 'junegunn/fzf.vim'
-        use 'fatih/molokai'
+        -- use 'fatih/molokai'
         use 'voldikss/vim-floaterm'
-        use {'neoclide/coc.nvim', branch = 'release'}
+        -- use {'neoclide/coc.nvim', branch = 'release'}
         use 'mileszs/ack.vim'
         use 'nathanaelkane/vim-indent-guides'
         use 'APZelos/blamer.nvim'
@@ -52,6 +52,63 @@ return require('packer').startup({
         use 'machakann/vim-sandwich'
         use 'github/copilot.vim'
         use 'sainnhe/sonokai'
+        use {
+            'neovim/nvim-lspconfig', 'williamboman/nvim-lsp-installer'
+        }
+        -- TypeScript 增强
+        use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
+        -- JSON 增强
+        -- 补全引擎
+        use("hrsh7th/nvim-cmp")
+        -- Snippet 引擎
+        use("hrsh7th/vim-vsnip")
+        -- 补全源
+        use("hrsh7th/cmp-vsnip")
+        use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
+        use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
+        use("hrsh7th/cmp-path") -- { name = 'path' }
+        use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
+        use("hrsh7th/cmp-nvim-lsp-signature-help") -- { name = 'nvim_lsp_signature_help' }
+        use 'hrsh7th/cmp-copilot'
+        -- 常见编程语言代码段
+        use("rafamadriz/friendly-snippets")
+        use("b0o/schemastore.nvim")
+        use {'simrat39/symbols-outline.nvim'}
+            -- telescope
+        use({
+            "nvim-telescope/telescope.nvim",
+            requires = { "nvim-lua/plenary.nvim" },
+        })
+        -- telescope extensions
+        use("LinArcX/telescope-env.nvim")
+        use("nvim-telescope/telescope-ui-select.nvim")
+        use("onsails/lspkind-nvim")
+        use("tami5/lspsaga.nvim")
+        use {
+            'mrded/nvim-lsp-notify',
+            requires = { 'rcarriga/nvim-notify' },
+            config = function()
+              require('lsp-notify').setup({
+                notify = require('notify'),
+              })
+            end
+          }
+        use 'lewis6991/gitsigns.nvim'
+            -- vimspector
+        -- use "puremourning/vimspector"
+        ----------------------------------------------
+        use("mfussenegger/nvim-dap")
+        use("theHamsta/nvim-dap-virtual-text")
+        use("rcarriga/nvim-dap-ui")
+        -- use {'leoluz/nvim-dap-go', config='require("dap-go").setup()'}
+        -- treesitter
+        use({
+            "nvim-treesitter/nvim-treesitter",
+            run = ":TSUpdate",
+        })
+        if paccker_bootstrap then
+            packer.sync()
+          end
     end,
     config = {
         ensure_dependencies = true,

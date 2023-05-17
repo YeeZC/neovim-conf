@@ -133,13 +133,28 @@ require("nvim-tree").setup({
       enable = true,
     },
     icons = {
-      git_placement = "signcolumn",
+     -- git_placement = "signcolumn",
       show = {
         file = true,
-        folder = false,
-        folder_arrow = false,
+        folder = true,
+        folder_arrow = true,
         git = true,
       },
+      glyphs = {
+        folder = {
+          arrow_closed = "⏵",
+          arrow_open = "⏷",
+        },
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = "⌥",
+          renamed = "➜",
+          untracked = "★",
+          deleted = "⊖",
+          ignored = "◌",
+        },
+      }
     },
   },
   filters = {

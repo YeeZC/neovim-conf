@@ -21,5 +21,5 @@ ln -s $dir/.vim/after/autoload/coc/ui.vim $HOME/.vim/after/autoload/coc/ui.vim
 
 # 自动安装 vim plugins
   echo "开始安装 vim plugins..."
-  bash -c "nvim +PackerSync +qall"
+  bash -c "nvim +PackerSync"
     echo "Successfully install vim plugins."
