@@ -72,106 +72,74 @@ pluginKeys.mapLSP = function(mapbuf)
   -- rename
   --[[
   Lspsaga 替换 rn
-  mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
+  mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
   --]]
-  mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+  mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   -- code action
   --[[
   Lspsaga 替换 ca
-  mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
+  mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
   --]]
-  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   -- go xx
   --[[
-    mapbuf('n', 'gd', '<cmd>Lspsaga preview_definition<CR>', opt)
-  mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
+    mapbuf('n', 'gd', '<cmd>Lspsaga preview_definition<CR>', opts)
+  mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
   --]]
-  mapbuf("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions({ initial_mode = 'normal', })<CR>", opt)
+  mapbuf("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions({ initial_mode = 'normal', })<CR>", opts)
   --[[
-  mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)
+  mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opts)
   Lspsaga 替换 gh
   --]]
-  mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
+  mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   --[[
   Lspsaga 替换 gr
-  mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
+  mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   --]]
-  mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
+  mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opts)
   --[[
   Lspsaga 替换 gp, gj, gk
-  mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-  mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-  mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
+  mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+  mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+  mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   --]]
   -- diagnostic
-  mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
-  mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
-  mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
-  mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+  mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+  mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+  mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+  mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   -- 未用
-  -- mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
-  -- mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-  -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
-  -- mapbuf("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
-  -- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opt)
-  -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
-  -- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opt)
-  -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
+  -- mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  -- mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+  -- mapbuf("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  -- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  -- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 end
 
 -- typescript 快捷键
 pluginKeys.mapTsLSP = function(mapbuf)
-  mapbuf("n", "gs", ":TSLspOrganize<CR>", opt)
-  mapbuf("n", "gR", ":TSLspRenameFile<CR>", opt)
-  mapbuf("n", "gi", ":TSLspImportAll<CR>", opt)
+  mapbuf("n", "gs", ":TSLspOrganize<CR>", opts)
+  mapbuf("n", "gR", ":TSLspRenameFile<CR>", opts)
+  mapbuf("n", "gi", ":TSLspImportAll<CR>", opts)
 end
 
   -- nvim-dap
   pluginKeys.mapDAP = function()
-    -- 开始
-    map("n", "<leader>dd", "lua require('dap-go').debug_test()", opt)
-    -- 结束
-    map(
-      "n",
-      "<leader>de",
-      ":lua require'dap'.close()<CR>"
-        .. ":lua require'dap'.terminate()<CR>"
-        .. ":lua require'dap.repl'.close()<CR>"
-        .. ":lua require'dapui'.close()<CR>"
-        .. ":lua require('dap').clear_breakpoints()<CR>"
-        .. "<C-w>o<CR>",
-      opt
-    )
-    -- 继续
-    map("n", "<leader>dc", ":lua require'dap'.continue()<CR>", opt)
+    -- 开始、继续、下一步、进入、跳出
+    map("n", "<F5>", ":DapContinue<CR>", opts)
+    map("n", "<F6>", ":DapStepOver<CR>", opts)
+    map("n", "<F7>", ":DapStepInto<CR>", opts)
+    map("n", "<F8>", ":DapStepOut<CR>", opts)
+    map("n", "<F9>", ":DapTerminate<CR>", opts)
     -- 设置断点
-    map("n", "<leader>dt", ":lua require('dap').toggle_breakpoint()<CR>", opt)
-    map("n", "<leader>dT", ":lua require('dap').clear_breakpoints()<CR>", opt)
-    --  stepOver, stepOut, stepInto
-    map("n", "<leader>dj", ":lua require'dap'.step_over()<CR>", opt)
-    map("n", "<leader>dk", ":lua require'dap'.step_out()<CR>", opt)
-    map("n", "<leader>dl", ":lua require'dap'.step_into()<CR>", opt)
+    map("n", "<leader>b", ":DapToggleBreakpoint<CR>", opts)
     -- 弹窗
-    map("n", "<leader>dh", ":lua require'dapui'.eval()<CR>", opt)
+    map("n", "<leader>e", ":lua require'dapui'.eval()<CR>", opts)
   end
   
-  -- vimspector
-  pluginKeys.mapVimspector = function()
-    -- 开始
-    map("n", "<leader>R", ":call vimspector#Launch()<CR>", opt)
-    -- 结束
-    map("n", "<Leader>de", ":call vimspector#Reset()<CR>", opt)
-    -- 继续
-    map("n", "<Leader>dc", ":call vimspector#Continue()<CR>", opt)
-    -- 设置断点
-    map("n", "<Leader>dt", ":call vimspector#ToggleBreakpoint()<CR>", opt)
-    map("n", "<Leader>dT", ":call vimspector#ClearBreakpoints()<CR>", opt)
-    --  stepOver, stepOut, stepInto
-    map("n", "<leader>dj", "<Plug>VimspectorStepOver", opt)
-    map("n", "<leader>dk", "<Plug>VimspectorStepOut", opt)
-    map("n", "<leader>dl", "<Plug>VimspectorStepInto", opt)
-  end
-
 -- nvim-cmp 自动补全
 pluginKeys.cmp = function(cmp)
   local feedkey = function(key, mode)
@@ -242,8 +210,8 @@ pluginKeys.cmp = function(cmp)
 end
 
 -- Telescope
-map("n", "<leader>f", ":Telescope find_files<CR>", opt)
-map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+map("n", "<leader>f", ":Telescope find_files<CR>", opts)
+map("n", "<C-f>", ":Telescope live_grep<CR>", opts)
 -- Telescope 列表中 插入模式快捷键
 pluginKeys.telescopeList = {
   i = {

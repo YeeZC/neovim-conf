@@ -19,7 +19,7 @@ return require('packer').startup({
         use 'luochen1990/rainbow'
         use 'vim-airline/vim-airline'
         use 'vim-airline/vim-airline-themes'
-        use {'fatih/vim-go',  run= ':GoUpdateBinaries' }
+        -- use {'fatih/vim-go',  run= ':GoUpdateBinaries' }
         -- use 'majutsushi/tagbar'
         -- use 'nvim-tree/nvim-web-devicons'
         use {'nvim-tree/nvim-tree.lua',requires = {
@@ -84,6 +84,9 @@ return require('packer').startup({
         use("nvim-telescope/telescope-ui-select.nvim")
         use("onsails/lspkind-nvim")
         use("tami5/lspsaga.nvim")
+        -- 代码格式化
+        -- use("mhartington/formatter.nvim")
+        use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
         use {
             'mrded/nvim-lsp-notify',
             requires = { 'rcarriga/nvim-notify' },
@@ -100,7 +103,7 @@ return require('packer').startup({
         use("mfussenegger/nvim-dap")
         use("theHamsta/nvim-dap-virtual-text")
         use("rcarriga/nvim-dap-ui")
-        -- use {'leoluz/nvim-dap-go', config='require("dap-go").setup()'}
+        -- use {'leoluz/nvim-dap-go'}
         -- treesitter
         use({
             "nvim-treesitter/nvim-treesitter",

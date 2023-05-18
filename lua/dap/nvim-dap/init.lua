@@ -5,13 +5,14 @@
 
 local dap = require("dap")
 local dapui = require("dapui")
+dap.set_log_level("ERROR")
 
 require("nvim-dap-virtual-text").setup({
   commented = true,
 })
 
 vim.fn.sign_define("DapBreakpoint", {
-  text = "🛑",
+  text = "⏺",
   texthl = "LspDiagnosticsSignError",
   linehl = "",
   numhl = "",
@@ -86,5 +87,6 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
-require("dap.nvim-dap.lua").setup()
+require("dap.nvim-dap.go").setup()
+require("dap.nvim-dap.python").setup()
 require("keybindings").mapDAP()
