@@ -77,7 +77,7 @@ return require('packer').startup({
             -- telescope
         use({
             "nvim-telescope/telescope.nvim",
-            requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
+            requires = { "nvim-lua/plenary.nvim", "kdheepak/lazygit.nvim" },
         })
         -- telescope extensions
         use("LinArcX/telescope-env.nvim")

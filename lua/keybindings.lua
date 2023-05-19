@@ -10,11 +10,6 @@
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
-local opt = {
-  noremap = true,
-  silent = true,
-}
-
 -- 本地变量
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
@@ -22,13 +17,15 @@ local opts = { noremap = true, silent = true }
 -- nvim tree
 map('n', '<leader>v', ':NvimTreeFindFile<cr>', opts)
 map('n', '<leader>g', ':NvimTreeToggle<cr>', opts)
+map('n', '<S-g>', ':LazyGit<cr>', opts)
 
 -- fzf
-map('n', '<leader>f', ':Files<cr>', opts)
+-- map('n', '<leader>f', ':Files<cr>', opts)
 map('n', '<leader>b', ':Buffers<cr>', opts)
-map('n', '<leader>q', ':Ag <C-R><C-W><cr>', opts)
-map('n', '<leader>t', ':SymbolsOutline<cr>', opts)
+-- map('n', '<leader>q', ':Ag <C-R><C-W><cr>', opts)
 map('n', 'ss', '<Plug>(easymotion-s2)', {noremap=false, silent=true})
+-- outline
+map('n', '<leader>t', ':SymbolsOutline<cr>', opts)
 
 -- Buffers
 map('n', '<C-n>', ':bn<cr>', opts)
@@ -135,9 +132,9 @@ end
     map("n", "<F8>", ":DapStepOut<CR>", opts)
     map("n", "<F9>", ":DapTerminate<CR>", opts)
     -- 设置断点
-    map("n", "<leader>b", ":DapToggleBreakpoint<CR>", opts)
+    map("n", "<S-b>", ":DapToggleBreakpoint<CR>", opts)
     -- 弹窗
-    map("n", "<leader>e", ":lua require'dapui'.eval()<CR>", opts)
+    map("n", "<S-e>", ":lua require'dapui'.eval()<CR>", opts)
   end
   
 -- nvim-cmp 自动补全
@@ -211,6 +208,7 @@ end
 
 -- Telescope
 map("n", "<leader>f", ":Telescope find_files<CR>", opts)
+map("n", "<leader>b", ":Telescope buffers<CR>", opts)
 map("n", "<C-f>", ":Telescope live_grep<CR>", opts)
 -- Telescope 列表中 插入模式快捷键
 pluginKeys.telescopeList = {
@@ -263,7 +261,6 @@ pluginKeys.gitsigns_on_attach = function(bufnr)
       return "<Ignore>"
     end, { expr = true })
   
-    map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>")
     map("n", "<leader>gS", gs.stage_buffer)
     map("n", "<leader>gu", gs.undo_stage_hunk)
     map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>")
