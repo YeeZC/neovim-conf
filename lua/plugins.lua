@@ -77,7 +77,7 @@ return require('packer').startup({
             -- telescope
         use({
             "nvim-telescope/telescope.nvim",
-            requires = { "nvim-lua/plenary.nvim" },
+            requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
         })
         -- telescope extensions
         use("LinArcX/telescope-env.nvim")
@@ -109,6 +109,7 @@ return require('packer').startup({
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
         })
+        use 'kdheepak/lazygit.nvim'
         if paccker_bootstrap then
             packer.sync()
           end
