@@ -14,7 +14,7 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup({
     function()
         use 'wbthomason/packer.nvim'
-        use 'tpope/vim-fugitive'
+        -- use 'tpope/vim-fugitive'
     	use 'rcarriga/nvim-notify'
         use 'luochen1990/rainbow'
         use 'vim-airline/vim-airline'
@@ -32,7 +32,7 @@ return require('packer').startup({
         use 'haya14busa/incsearch.vim'
         use 'junegunn/vim-slash'
         use 'Shougo/echodoc.vim'
-        use 'dense-analysis/ale'
+        -- use 'dense-analysis/ale'
         use 'junegunn/vim-easy-align'
         use 'easymotion/vim-easymotion'
         use 'flazz/vim-colorschemes'
@@ -42,10 +42,10 @@ return require('packer').startup({
         use 'voldikss/vim-floaterm'
         -- use {'neoclide/coc.nvim', branch = 'release'}
         use 'mileszs/ack.vim'
-        use 'nathanaelkane/vim-indent-guides'
-        use 'APZelos/blamer.nvim'
+        -- use 'nathanaelkane/vim-indent-guides'
+        -- use 'APZelos/blamer.nvim'
         use 'MattesGroeger/vim-bookmarks'
-        use 'scrooloose/vim-slumlord'
+        -- use 'scrooloose/vim-slumlord'
         use 'pseewald/vim-anyfold'
         use 'mhinz/vim-startify'
         use 'tpope/vim-surround'

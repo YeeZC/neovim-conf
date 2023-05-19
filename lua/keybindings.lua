@@ -47,10 +47,10 @@ map('n', '<leader>sp', ':FloatermPrev<cr>', opts)
 
 
 -- ale
-map('n', 'sp', '<Plug>(ale_previous_wrap)', opts)
-map('n', 'sn', '<Plug>(ale_next_wrap)', opts)
-map('n', '<leader>d', ':ALEDetail<cr>', opts)
-map('n', '<leader>l', ':ALEToggle<cr>', opts)
+-- map('n', 'sp', '<Plug>(ale_previous_wrap)', opts)
+-- map('n', 'sn', '<Plug>(ale_next_wrap)', opts)
+-- map('n', '<leader>d', ':ALEDetail<cr>', opts)
+-- map('n', '<leader>l', ':ALEToggle<cr>', opts)
 
 -- tabs
 map('n', '[t', ':tabprevious<cr>', opts)
@@ -275,7 +275,8 @@ pluginKeys.gitsigns_on_attach = function(bufnr)
     end)
     -- toggle
     map("n", "<leader>gtd", gs.toggle_deleted)
-    map("n", "<leader>gtb", gs.toggle_current_line_blame)
+    map("n", "<leader>d", ":Gitsigns toggel_word_diff<CR>")
+    map("n", "<leader>l", gs.toggle_current_line_blame)
     -- Text object
     map({ "o", "x" }, "ig", ":<C-U>Gitsigns select_hunk<CR>")
   end
