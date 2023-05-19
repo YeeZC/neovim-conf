@@ -15,6 +15,7 @@ local servers = {
     emmet_ls = require("lsp.config.emmet"),
     yamlls = require("lsp.config.yamlls"),
     gopls = require("lsp.config.go"),
+    sqlls = require("lsp.config.sqlls"),
 }
 
 for name, config in pairs(servers) do

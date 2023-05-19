@@ -3,37 +3,58 @@ local M = {}
 function M.setup()
     local dap = require('dap')
 
-    dap.adapters.python = {
-    type = "executable";
-    command = '/usr/bin/python3';
-    args = { '-m', 'debugpy.adapter' };
-    }
+    dap.adapters.python = function(cb, config)
+        if config.request == 'attach' then
+          ---@diagnostic disable-next-line: undefined-field
+          local port = (config.connect or config).port
+          ---@diagnostic disable-next-line: undefined-field
+          local host = (config.connect or config).host or '127.0.0.1'
+          cb({
+            type = 'server',
+            port = assert(port, '`connect.port` is required for a python `attach` configuration'),
+            host = host,
+            options = {
+              source_filetype = 'python',
+            },
+          })
+        else
+          cb({
+            type = 'executable',
+            command = '/usr/bin/python3',
+            args = { '-m', 'debugpy.adapter' },
+            options = {
+              source_filetype = 'python',
+            },
+          })
+        end
+      end
+      
 
-    local get_args = function()
-    -- 获取输入命令行参数
-    local cmd_args = vim.fn.input('CommandLine Args:')
-    local params = {}
-    -- 定义分隔符(%s在lua内表示任何空白符号)
-    local sep = "%s"
-    for param in string.gmatch(cmd_args, "[^%s]+") do
-        table.insert(params, param)
-    end
-    return params
-    end;
-
-    dap.configurations.python = {
-    {
-        type = 'python';
-        request = 'launch';
-        name = 'launch file';
-        -- 此处指向当前文件
-        program = '${file}';
-        args = get_args;
-        pythonpath = function()
-        return '/usr/bin/python3'
-        end;
-    },
-    }
+      dap.configurations.python = {
+        {
+          -- The first three options are required by nvim-dap
+          type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
+          request = 'launch';
+          name = "Launch file";
+      
+          -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+      
+          program = "${file}"; -- This configuration will launch the current file if used.
+          pythonPath = function()
+            -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+            -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+            -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+            local cwd = vim.fn.getcwd()
+            if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
+              return cwd .. '/venv/bin/python'
+            elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
+              return cwd .. '/.venv/bin/python'
+            else
+              return '/usr/bin/python3'
+            end
+          end;
+        },
+      }
 end
 
 return M
