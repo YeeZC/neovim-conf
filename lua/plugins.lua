@@ -90,15 +90,15 @@ return require("packer").startup({
 		-- 代码格式化
 		-- use("mhartington/formatter.nvim")
 		use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
-		use({
-			"mrded/nvim-lsp-notify",
-			requires = { "rcarriga/nvim-notify" },
-			config = function()
-				require("lsp-notify").setup({
-					notify = require("notify"),
-				})
-			end,
-		})
+		-- use({
+		-- 	"mrded/nvim-lsp-notify",
+		-- 	requires = { "rcarriga/nvim-notify" },
+		-- 	config = function()
+		-- 		require("lsp-notify").setup({
+		-- 			notify = require("notify"),
+		-- 		})
+		-- 	end,
+		-- })
 		use("lewis6991/gitsigns.nvim")
 		-- vimspector
 		-- use "puremourning/vimspector"
