@@ -56,6 +56,8 @@ return require("packer").startup({
 			"neovim/nvim-lspconfig",
 			"williamboman/nvim-lsp-installer",
 		})
+		-- lua 增强
+		use("folke/neodev.nvim")
 		-- TypeScript 增强
 		use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
 		-- JSON 增强

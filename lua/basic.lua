@@ -1,10 +1,26 @@
+function pythonPath()
+    if vim.fn.executable("/usr/local/bin/python3") == 1 then
+        return "/usr/local/bin/python3"
+    elseif vim.fn.executable("/usr/bin/python3") == 1 then
+        return "/usr/bin/python3"
+    else
+        local cwd = vim.fn.getcwd()
+        if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+            return cwd .. "/venv/bin/python"
+        elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+            return cwd .. "/.venv/bin/python"
+        else
+            return "/usr/bin/python3"
+        end
+    end
+end
 vim.cmd([[
     set t_Co=256
     set backspace=2
     filetype on
     filetype plugin on
     filetype indent on
-    let g:python3_host_prog = "/usr/bin/python3"
+    let g:python3_host_prog = "]] .. pythonPath() .. [["
 ]])
 vim.opt.compatible = false
 vim.opt.eb = false
