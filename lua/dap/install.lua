@@ -56,11 +56,11 @@ function M.install_gopls()
         comands["gopls"] = "go install golang.org/x/tools/gopls@latest"
         count = count + 1
     end
-    if vim.fn.executable(cwd .. "/bin/goimports") == 1 then
+    if vim.fn.executable(gopath .. "/bin/goimports") ~= 1 then
         comands["goimports"] = "go install golang.org/x/tools/cmd/goimports@latest"
         count = count + 1
     end
-    if vim.fn.executable(cwd .. "/bin/dlv") == 1 then
+    if vim.fn.executable(gopath .. "/bin/dlv") ~= 1 then
         comands["goimports"] = "go install github.com/go-delve/delve/cmd/dlv@latest"
         count = count + 1
     end
@@ -83,10 +83,11 @@ function M.install_gopls()
         if failed > 0 then
             notify.output_notify("Install Golang dev tools got some failed", "gopls", "end", "gopls_cli", "token", "warn")
         elseif failed == count then
-                        notify.output_notify("Install Golang dev tools failed", "gopls", "end", "gopls_cli", "token", "error")
+            notify.output_notify("Install Golang dev tools failed", "gopls", "end", "gopls_cli", "token", "error")
         else
-                        notify.output_notify("Install Golang dev tools success", "gopls", "end", "gopls_cli", "token", "success")
+            notify.output_notify("Install Golang dev tools success", "gopls", "end", "gopls_cli", "token", "success")
         end
+    end
 end
 
 function M.install()
