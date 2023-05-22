@@ -12,14 +12,14 @@ require("nvim-dap-virtual-text").setup({
 })
 
 vim.fn.sign_define("DapBreakpoint", {
-    text = "⏺",
+    text = "",
     texthl = "LspDiagnosticsSignError",
     linehl = "",
     numhl = "",
 })
 
 vim.fn.sign_define("DapStopped", {
-    text = "",
+    text = "",
     texthl = "LspDiagnosticsSignInformation",
     linehl = "DiagnosticUnderlineInfo",
     numhl = "LspDiagnosticsSignInformation",

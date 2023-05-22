@@ -5,7 +5,7 @@ function M.setup()
 end
 
 function M.check_gopls()
-    local notify = require("plugin/notify_exp")
+    local notify = require("plugin/notify")
     local gopath = os.getenv("GOPATH")
     if gopath == "" then 
         notify.output_notify("Golang enviroment not found", "GolangTools", "report", "gopls_cli", "token", "warn")

@@ -21,7 +21,7 @@ function M.get_python(venv)
 end
 
 function M.check_debugpy()
-    local notify = require("plugin/notify_exp")
+    local notify = require("plugin/notify")
     local cmd = M.get_python(true)
     local cmd_check = cmd .. " -m pip show debugpy"
     -- 异步判断 debugpy 是否安装，如果没有安装则调用 install_debugpy
@@ -46,7 +46,7 @@ function M.check_debugpy()
 end
 
 function M.check_pyright()
-    local notify = require("plugin/notify_exp")
+    local notify = require("plugin/notify")
     local cmd = M.get_python(false)
     local commands = {"pyright", "black"}
     for i = 1, #commands do 

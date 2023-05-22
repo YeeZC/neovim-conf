@@ -115,7 +115,9 @@ return require("packer").startup({
 			run = ":TSUpdate",
 		})
 		use("kdheepak/lazygit.nvim")
-		if paccker_bootstrap then
+		-- vscode-go 当插件安装
+		use({ "golang/vscode-go", branch = "release", run = "npm install && npm run compile" })
+		if packer_bootstrap then
 			packer.sync()
 		end
 	end,
