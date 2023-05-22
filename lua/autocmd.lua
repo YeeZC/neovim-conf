@@ -29,49 +29,6 @@ autocmd("BufWritePost", {
 autocmd("BufEnter", {
     group = myAutoGroup,
     callback = function()
-        if debugpy then
-            return
-        end
-         -- 判断file是否是python文件
-         if vim.fn.expand("%:e") ~= "py" then
-            return
-        end
-        local get_python = function()
-            local cwd = vim.fn.getcwd()
-            if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
-                cwd = cwd .. "/venv/bin/python"
-            elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-                cwd = cwd .. "/.venv/bin/python"
-            else
-                cwd = "/usr/bin/python3"
-            end
-            return cwd
-        end
-        local cmd = get_python()
-        -- 判断 debugpy 是否安装
-        local cmd_check = cmd .. " -m pip show debugpy"
-        local install_debugpy = function()
-            local cmd_install = cmd .. " -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple debugpy"
-
-            -- 异步执行 cmd_install
-            vim.fn.jobstart(cmd_install, {
-                on_exit = function(_, code)
-                    if code == 0 then
-                        vim.notify("debugpy install success", "info", { title = "debugpy" })
-                    else
-                        vim.notify("debugpy install fail", "error", { title = "debugpy" })
-                    end
-                end,
-            })
-        end
-        -- 异步判断 debugpy 是否安装，如果没有安装则调用 install_debugpy
-        vim.fn.jobstart(cmd_check, {
-            on_exit = function(_, code)
-                if code ~= 0 then
-                    vim.notify("debugpy is not installed", "warn", { title = "debugpy" })
-                    install_debugpy()
-                end
-            end,
-        })
+        require('dap.install').install()
     end,
 })

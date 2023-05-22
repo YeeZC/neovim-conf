@@ -19,7 +19,6 @@ require("autocmd")
 require("dap/nvim-dap")
 require("plugin.nvim-treesitter")
 require("lsp.null-ls")
--- require("dap.vimspector")
 vim.cmd([[
   augroup packer_user_config
     autocmd!
