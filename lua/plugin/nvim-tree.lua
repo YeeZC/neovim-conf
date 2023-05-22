@@ -160,6 +160,7 @@ require("nvim-tree").setup({
         show_on_dirs = true,
     },
     view = {
+        width = 30,
         adaptive_size = false,
     },
 })

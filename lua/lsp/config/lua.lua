@@ -50,7 +50,6 @@ local opts = {
 
 -- 查看目录等信息
 -- print(vim.inspect(server))
-require("neodev").setup({})
 return {
     on_setup = function(server)
         server.setup(opts)

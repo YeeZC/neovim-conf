@@ -73,8 +73,24 @@ null_ls.setup({
     -- #{c}: code (if available)
     diagnostics_format = "[#{s}] #{m}",
     on_attach = function(_)
+        local myAutoGroup = vim.api.nvim_create_augroup("fmt", {
+            clear = true,
+        })
+        local autocmd = vim.api.nvim_create_autocmd
+
+        autocmd("BufWritePre,BufNewFile,BufRead", {
+            group = myAutoGroup,
+            callback = function()
+                -- 判断file是否是python文件
+                local ext = vim.fn.expand("%:e")
+                if ext ~= "" then
+                    vim.lsp.buf.format ({async = true})
+
+                end
+            end
+        })
         -- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format {async = true}' ]])
-        vim.cmd("autocmd BufWritePre,BufNewFile,BufRead <buffer> lua vim.lsp.buf.format {async = true}")
+        -- vim.cmd("autocmd BufWritePre,BufNewFile,BufRead <buffer> lua vim.lsp.buf.format {async = true}")
         -- if client.resolved_capabilities.document_formatting then
         --   vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format {async = true}")
         -- end
