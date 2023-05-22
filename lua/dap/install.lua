@@ -46,9 +46,10 @@ end
 
 function M.install_gopls()
     local gopath = os.getenv("GOPATH")
-    if gopath == "" {
+    if gopath == "" then 
         notify.output_notify("Golang enviroment not found", "gopls", "report", "gopls_cli", "token", "warn")
-    }
+        return
+    end
     local comands = {}
     local count = 0
     if vim.fn.executable(gopath .. "/bin/gopls") ~= 1 then
@@ -66,8 +67,26 @@ function M.install_gopls()
     if count > 0 then 
         notify.output_notify("Install Golang dev tools", "gopls", "begin", "gopls_cli", "token", "warn")
         -- 遍历 commands 执行 value 命令 安装对应的工具
-        
-    end
+        local failed = 0
+        for key, value in pairs(comands) do
+            vim.fn.jobstart(value, {
+                on_exit = function(_, code)
+                    if code == 0 then
+                        notify.output_notify("Install " .. key .." success", "gopls", "report", "gopls_cli", "token", "success")
+                    else
+                        notify.output_notify("Install " .. key .. " fail", "gopls", "report", "gopls_cli", "token", "error")
+                        failed = failed + 1
+                    end
+                end,
+            })
+        end
+        if failed > 0 then
+            notify.output_notify("Install Golang dev tools got some failed", "gopls", "end", "gopls_cli", "token", "warn")
+        elseif failed == count then
+                        notify.output_notify("Install Golang dev tools failed", "gopls", "end", "gopls_cli", "token", "error")
+        else
+                        notify.output_notify("Install Golang dev tools success", "gopls", "end", "gopls_cli", "token", "success")
+        end
 end
 
 function M.install()
