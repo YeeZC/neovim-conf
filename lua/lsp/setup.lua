@@ -16,7 +16,7 @@ local servers = {
     yamlls = require("lsp.config.yamlls"),
     gopls = require("lsp.config.go"),
     sqlls = require("lsp.config.sqlls"),
---     lua_ls = require("lsp.config.lua"),
+    lua_ls = require("lsp.config.lua"),
     kotlin_language_server = require("lsp.config.common"),
 }
 
@@ -49,11 +49,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "<space>wl", function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
-        vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+        vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
         vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
         vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-        vim.keymap.set("n", "<space>f", function()
+        vim.keymap.set("n", "fmt", function()
             vim.lsp.buf.format({ async = true })
         end, opts)
     end,

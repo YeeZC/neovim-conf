@@ -16,8 +16,6 @@ return {
             flags = {
                 debounce_text_changes = 150,
             },
-            on_attach = function(client, _)
-            end,
         })
     end,
 }

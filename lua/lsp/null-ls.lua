@@ -72,22 +72,22 @@ null_ls.setup({
     -- #{s}: source name (defaults to null-ls if not specified)
     -- #{c}: code (if available)
     diagnostics_format = "[#{s}] #{m}",
-    on_attach = function(_)
+    on_attach = function(client, bufnr)
         local myAutoGroup = vim.api.nvim_create_augroup("fmt", {
             clear = true,
         })
         local autocmd = vim.api.nvim_create_autocmd
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = myAutoGroup, buffer = bufnr })
+            autocmd("BufWritePre,BufNewFile,BufRead", {
+                group = myAutoGroup,
+                callback = function()
+                    -- vim.lsp.buf.format({ async = true })
+                    vim.lsp.buf.format({ bufnr = bufnr })
+                end,
+            })
+        end
 
-        autocmd("BufWritePre,BufNewFile,BufRead", {
-            group = myAutoGroup,
-            callback = function()
-                -- 判断file是否是python文件
-                local ext = vim.fn.expand("%:e")
-                if ext ~= "" then
-                    vim.lsp.buf.format({ async = true })
-                end
-            end,
-        })
         -- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format {async = true}' ]])
         -- vim.cmd("autocmd BufWritePre,BufNewFile,BufRead <buffer> lua vim.lsp.buf.format {async = true}")
         -- if client.resolved_capabilities.document_formatting then

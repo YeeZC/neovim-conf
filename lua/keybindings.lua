@@ -21,7 +21,7 @@ map("n", "<S-g>", ":LazyGit<cr>", opts)
 
 -- fzf
 -- map('n', '<leader>f', ':Files<cr>', opts)
-map("n", "<leader>b", ":Buffers<cr>", opts)
+-- map("n", "<leader>b", ":Buffers<cr>", opts)
 -- map('n', '<leader>q', ':Ag <C-R><C-W><cr>', opts)
 map("n", "ss", "<Plug>(easymotion-s2)", { noremap = false, silent = true })
 -- outline
@@ -32,11 +32,6 @@ map("n", "<C-n>", ":bn<cr>", opts)
 map("n", "<C-m>", ":bp<cr>", opts)
 map("n", "<C-d>", ":bd<cr>", opts)
 map("n", "<leader>a", ":cclose<cr>", opts)
-
--- incsearch
-map("n", "/", "<Plug>(incsearch-forward)", opts)
-map("n", "?", "<Plug>(incsearch-backward)", opts)
-map("n", "g/", "<Plug>(incsearch-stay)", opts)
 
 -- Floarerm
 map("n", "<C-p>", ":FloatermToggle<cr>", opts)
@@ -113,6 +108,16 @@ pluginKeys.mapLSP = function(mapbuf)
     -- -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
     -- -- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
     -- -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+end
+
+pluginKeys.incsearch = function()
+    -- incsearch
+    map("n", "/", "<Plug>(incsearch-forward)", opts)
+    map("n", "?", "<Plug>(incsearch-backward)", opts)
+    map("n", "g/", "<Plug>(incsearch-stay)", opts)
+    map("n", "z/", "<Plug>(incsearch-fuzzy-/)", opts)
+    map("n", "z?", "<Plug>(incsearch-fuzzy-?)", opts)
+    map("n", "zg?", "<Plug>(incsearch-fuzzy-stay)", opts)
 end
 
 -- typescript 快捷键
@@ -281,7 +286,7 @@ pluginKeys.gitsigns_on_attach = function(bufnr)
         gs.blame_line({ full = true })
     end)
     map("n", "<leader>gd", gs.diffthis)
-    map("n", "<leader>gD", function()
+    map("n", "D", function()
         gs.diffthis("~")
     end)
     -- toggle

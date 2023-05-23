@@ -57,4 +57,3 @@ function M.check_gopls()
 end
 
 return M
-
