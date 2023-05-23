@@ -12,11 +12,12 @@ local servers = {
     bashls = require("lsp.config.bash"),
     html = require("lsp.config.html"),
     cssls = require("lsp.config.css"),
-    emmet_ls = require("lsp.config.emmet"),
+    emmet_ls = require("lsp.config.common"),
     yamlls = require("lsp.config.yamlls"),
     gopls = require("lsp.config.go"),
     sqlls = require("lsp.config.sqlls"),
-    -- lua_ls = require("lsp.config.lua"),
+--     lua_ls = require("lsp.config.lua"),
+    kotlin_language_server = require("lsp.config.common"),
 }
 
 for name, config in pairs(servers) do

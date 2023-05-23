@@ -34,7 +34,6 @@ lspkind.init({
         Function = "",
         Constructor = "",
         Field = "ﰠ",
-        Variable = "",
         Class = "ﴯ",
         Interface = "",
         Module = "",
@@ -54,7 +53,7 @@ lspkind.init({
         Event = "",
         Operator = "",
         TypeParameter = "𝙏",
-        Variable="",
+        Variable = "",
         Fragment = "",
     },
 })

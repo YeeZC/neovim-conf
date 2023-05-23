@@ -84,10 +84,9 @@ null_ls.setup({
                 -- 判断file是否是python文件
                 local ext = vim.fn.expand("%:e")
                 if ext ~= "" then
-                    vim.lsp.buf.format ({async = true})
-
+                    vim.lsp.buf.format({ async = true })
                 end
-            end
+            end,
         })
         -- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format {async = true}' ]])
         -- vim.cmd("autocmd BufWritePre,BufNewFile,BufRead <buffer> lua vim.lsp.buf.format {async = true}")

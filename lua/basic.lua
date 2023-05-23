@@ -4,7 +4,7 @@ vim.cmd([[
     filetype on
     filetype plugin on
     filetype indent on
-    let g:python3_host_prog = "]] .. require('dap.install.python').get_python(false) .. [["
+    let g:python3_host_prog = "]] .. require("dap.install.python").get_python(false) .. [["
 ]])
 vim.opt.compatible = false
 vim.opt.eb = false

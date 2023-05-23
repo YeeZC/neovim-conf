@@ -7,7 +7,7 @@ end
 function M.check_gopls()
     local notify = require("plugin/notify")
     local gopath = os.getenv("GOPATH")
-    if gopath == "" then 
+    if gopath == "" then
         notify.output_notify("Golang enviroment not found", "GolangTools", "report", "gopls_cli", "token", "warn")
         return
     end
@@ -18,12 +18,12 @@ function M.check_gopls()
     commands["dlv"] = "github.com/go-delve/delve/cmd/dlv@latest"
     local count = 0
     for key, value in pairs(commands) do
-        if vim.fn.executable(gopath .. "/bin/".. key) ~= 1 then
+        if vim.fn.executable(gopath .. "/bin/" .. key) ~= 1 then
             notfounds[key] = value
             count = count + 1
         end
     end
-    if count > 0 then 
+    if count > 0 then
         -- notify.output_notify("Install Golang dev tools", "GolangTools", "begin", "gopls_cli", "token", "info")
         -- 遍历 commands 执行 value 命令 安装对应的工具
         local current = 0
@@ -31,11 +31,18 @@ function M.check_gopls()
         for key, value in pairs(notfounds) do
             current = current + 1
             local index = current
-            notify.output_notify("Install " .. key .." success", "["..index.."/"..count.."]GolangTools", "begin", "gopls_cli", key, "info")
+            notify.output_notify(
+                "Install " .. key .. " success",
+                "[" .. index .. "/" .. count .. "]GolangTools",
+                "begin",
+                "gopls_cli",
+                key,
+                "info"
+            )
             vim.fn.jobstart("go install " .. value, {
                 on_exit = function(_, code)
                     if code == 0 then
-                        notify.output_notify("Install " .. key .." success", nil, "end", "gopls_cli", key, "success")
+                        notify.output_notify("Install " .. key .. " success", nil, "end", "gopls_cli", key, "success")
                         if key == "gopls" then
                             require("dap.nvim-dap.go").setup()
                         end
@@ -50,3 +57,4 @@ function M.check_gopls()
 end
 
 return M
+
