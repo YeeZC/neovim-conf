@@ -4,7 +4,7 @@ function M.setup()
     -- require('dap-go').setup()
     local dap = require("dap")
     local fn = vim.fn
-    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/vscode-go/dist/debugAdapter.js"
+    local install_path = fn.stdpath("data") .. "/lazy/vscode-go/dist/debugAdapter.js"
     dap.adapters.go = {
         type = "executable",
         command = "node",

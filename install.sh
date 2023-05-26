@@ -14,3 +14,8 @@ mkdir -p $HOME/.vim/after/autoload/coc
 if [ -e "$HOME/.vim/after/autoload/coc/ui.vim" ]; then
 	rm -rf $HOME/.vim/after/autoload/coc/ui.vim
 fi
+
+# 自动安装 vim plugins
+echo "开始安装 vim plugins..."
+bash -c "nvim"
+echo "Successfully install vim plugins."
