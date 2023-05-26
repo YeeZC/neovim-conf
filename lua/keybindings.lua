@@ -23,9 +23,9 @@ map("n", "<S-g>", ":LazyGit<cr>", opts)
 -- map('n', '<leader>f', ':Files<cr>', opts)
 -- map("n", "<leader>b", ":Buffers<cr>", opts)
 -- map('n', '<leader>q', ':Ag <C-R><C-W><cr>', opts)
-map("n", "ss", "<Plug>(easymotion-s2)", { noremap = false, silent = true })
+-- map("n", "ss", "<Plug>(easymotion-s2)", { noremap = false, silent = true })
 -- outline
-map("n", "<leader>t", ":SymbolsOutline<cr>", opts)
+map("n", "<leader>t", ":Lspsaga outline<cr>", opts)
 
 -- Buffers
 map("n", "<C-n>", ":bn<cr>", opts)
@@ -34,17 +34,7 @@ map("n", "<C-d>", ":bd<cr>", opts)
 map("n", "<leader>a", ":cclose<cr>", opts)
 
 -- Floarerm
-map("n", "<C-p>", ":FloatermToggle<cr>", opts)
-map("n", "<leader>sc", ":FloatermNew<cr>", opts)
-map("n", "<leader>sd", ":FloatermKill<cr>", opts)
-map("n", "<leader>sn", ":FloatermNext<cr>", opts)
-map("n", "<leader>sp", ":FloatermPrev<cr>", opts)
-
--- ale
--- map('n', 'sp', '<Plug>(ale_previous_wrap)', opts)
--- map('n', 'sn', '<Plug>(ale_next_wrap)', opts)
--- map('n', '<leader>d', ':ALEDetail<cr>', opts)
--- map('n', '<leader>l', ':ALEToggle<cr>', opts)
+map("n", "<C-p>", ":Lspsaga term_toggle<cr>", opts)
 
 -- tabs
 map("n", "[t", ":tabprevious<cr>", opts)
