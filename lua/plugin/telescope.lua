@@ -35,5 +35,3 @@ pcall(telescope.load_extension, "ui-select")
 pcall(telescope.load_extension, "lazygit")
 pcall(telescope.load_extension, "fzf")
 pcall(telescope.load_extension, "dap")
-pcall(telescope.load_extension, "packer")
-
