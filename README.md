@@ -2,10 +2,8 @@
 ## 使用配置
 ***配置使用 link 的方式，将文件链接创建到 ${HOME}/.config/nvim 目录下***
 ```shell
-https://github.com/YeeZC/neovim-conf.git
-cd neovim-conf && sh install.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/YeeZC/neovim-conf/HEAD/install.sh)"
 ```
-
 ## 插件说明
 ### 插件管理器 [lazy.nvim](https://github.com/folke/lazy.nvim)
 

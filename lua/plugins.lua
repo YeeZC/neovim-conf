@@ -98,7 +98,6 @@ require("lazy").setup({
 	"LinArcX/telescope-env.nvim",
 	"nvim-telescope/telescope-dap.nvim",
 	"nvim-telescope/telescope-ui-select.nvim",
-	"nvim-telescope/telescope-packer.nvim",
 	"onsails/lspkind.nvim",
 	{
 		"nvimdev/lspsaga.nvim",
