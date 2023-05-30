@@ -17,5 +17,5 @@ fi
 
 # 自动安装 vim plugins
 echo "开始安装 vim plugins..."
-bash -c "nvim"
+bash -c "nvim '+Lazy sync' +qa"
 echo "Successfully install vim plugins."
