@@ -317,7 +317,7 @@ function __validate_node_installation() {
 
 function __install_nodejs_deps_yarn() {
 	echo "Installing node modules with yarn.."
-	sudo yarn global add "${__npm_deps[@]}"
+	yarn global add "${__npm_deps[@]}"
 	echo "All NodeJS dependencies are successfully installed"
 }
 
