@@ -65,10 +65,6 @@ function is_darwin() {
 	return [ "$OS" = "Darwin" ]
 }
 
-function is_go_installed() {
-	return command -v go &>/dev/null
-}
-
 function clone_configuration() {
 	mkdir -p $CONF_ROOT
 	rm -rf $NVIM_CONF_LUA
@@ -358,7 +354,7 @@ function install_rust_deps() {
 }
 
 function install_go_deps() {
-	if ! is_go_installed; then
+	if ! command -v go &>/dev/null; then
 		echo "[WARN]: skipping installing optional go dependencies"
 	else
 		for dep in "${__go_deps[@]}"; do
