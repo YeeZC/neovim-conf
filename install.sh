@@ -40,6 +40,14 @@ declare -a __pip_deps=(
 declare -a __rust_deps=(
 	"fd::fd-find"
 	"rg::ripgrep"
+	"stylua::stylua"
+)
+
+declare -a __go_deps=(
+	"golang.org/x/tools/gopls"
+	"github.com/go-delve/delve/cmd/dlv"
+	"golang.org/x/tools/cmd/goimports"
+	"mvdan.cc/sh/v3/cmd/shfmt"
 )
 
 declare -a __tools=(
@@ -48,6 +56,18 @@ declare -a __tools=(
 	"nvim"
 	"lazygit"
 )
+
+function is_arch() {
+	return [ -f "/etc/arch-release" ] || [ -f "/etc/artix-release" ]
+}
+
+function is_darwin() {
+	return [ "$OS" = "Darwin" ]
+}
+
+function is_go_installed() {
+	return command -v go &>/dev/null
+}
 
 function clone_configuration() {
 	mkdir -p $CONF_ROOT
@@ -87,7 +107,11 @@ function install_tools() {
 					;;
 				esac
 			elif [ "nvim" = ${dep} ]; then
-				install_neovim_from_src || return 1
+				if is_arch || is_darwin; then
+					bash -c "$RECOMMEND_INSTALL neovim" || return 1
+				else
+					install_neovim_from_src || return 1
+				fi
 			else
 				bash -c "$RECOMMEND_INSTALL ${dep}" || return 1
 			fi
@@ -270,21 +294,6 @@ function install_python_deps() {
 	echo "All Python dependencies are successfully installed"
 }
 
-function install_python_deps() {
-	echo "Verifying that pip is available.."
-	if ! python3 -m ensurepip >/dev/null; then
-		if ! python3 -m pip --version &>/dev/null; then
-			echo "[WARN]: skipping installing optional python dependencies"
-			return 1
-		fi
-	fi
-	echo "Installing with pip.."
-	for dep in "${__pip_deps[@]}"; do
-		python3 -m pip install --user "$dep" || return 1
-	done
-	echo "All Python dependencies are successfully installed"
-}
-
 function __validate_node_installation() {
 	local pkg_manager="$1"
 	local manager_home
@@ -348,6 +357,17 @@ function install_rust_deps() {
 	echo "All Rust dependencies are successfully installed"
 }
 
+function install_go_deps() {
+	if ! is_go_installed; then
+		echo "[WARN]: skipping installing optional go dependencies"
+		return 1
+	fi
+	for dep in "${__go_deps[@]}"; do
+		go install "${dep}@latest" || return 1
+	done
+	echo "All Go dependencies are successfully installed"
+}
+
 function main() {
 	print_logo
 	msg "Detecting platform for managing any additional neovim dependencies"
@@ -356,6 +376,7 @@ function main() {
 	install_nodejs_deps
 	install_python_deps
 	install_rust_deps
+	install_go_deps
 
 	if [ -e "$HOME/.config/nvim" ]; then
 		rm -rf $HOME/.config/nvim
