@@ -360,12 +360,12 @@ function install_rust_deps() {
 function install_go_deps() {
 	if ! is_go_installed; then
 		echo "[WARN]: skipping installing optional go dependencies"
-		return 0
+	else
+		for dep in "${__go_deps[@]}"; do
+			go install "${dep}@latest" || return 1
+		done
+		echo "All Go dependencies are successfully installed"
 	fi
-	for dep in "${__go_deps[@]}"; do
-		go install "${dep}@latest" || return 1
-	done
-	echo "All Go dependencies are successfully installed"
 }
 
 function main() {
