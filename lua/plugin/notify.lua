@@ -3,6 +3,8 @@ vim.notify = require("notify")
 local M = {
 	client_notifs = {},
 	spinner_frames = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" },
+	-- spinner_frames = { "", "󰪞","󰪟","󰪠","󰪡","󰪢","󰪣","󰪤","󰪥"},
+	-- spinner_frames = {  "󰸶", "󰸸", "󰸷", "󰸴", "󰸵"},
 }
 
 function M.get_notif_data(client_id, token)
@@ -32,7 +34,7 @@ function M.update_spinner(client_id, token)
 
 		vim.defer_fn(function()
 			M.update_spinner(client_id, token)
-		end, 100)
+		end, 80)
 	end
 end
 
