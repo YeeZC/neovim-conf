@@ -29,6 +29,6 @@ autocmd("BufWritePost", {
 autocmd("BufEnter", {
     group = myAutoGroup,
     callback = function()
-        require("dap.install").setup()
+        require("config.dap.install").setup()
     end,
 })

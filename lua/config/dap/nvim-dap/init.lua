@@ -1,7 +1,3 @@
--- local dap_install = require("dap-install")
--- dap_install.setup({
---   installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
--- })
 
 local dap = require("dap")
 local dapui = require("dapui")
@@ -90,6 +86,6 @@ end
 require("neodev").setup({
     library = { plugins = { "nvim-dap-ui" }, types = true },
 })
-require("dap.nvim-dap.go").setup()
-require("dap.nvim-dap.python").setup()
+require("config.dap.nvim-dap.go").setup()
+require("config.dap.nvim-dap.python").setup()
 require("keybindings").mapDAP()

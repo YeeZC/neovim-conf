@@ -18,7 +18,7 @@ function M.setup()
 				},
 			})
 		else
-			local cmd = require("dap.install.python").get_python(true)
+			local cmd = require("config.dap.install.python").get_python(true)
 			cb({
 				type = "executable",
 				command = cmd,
@@ -41,7 +41,7 @@ function M.setup()
 
 			program = "${file}", -- This configuration will launch the current file if used.
 			pythonPath = function()
-				return require("dap.install.python").get_python(true)
+				return require("config.dap.install.python").get_python(true)
 			end,
 		},
 	}

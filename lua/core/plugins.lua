@@ -20,9 +20,36 @@ require("lazy").setup({
 	{ "luochen1990/rainbow", event = "BufEnter" },
 	-- 状态栏
 	{
-		"vim-airline/vim-airline",
+		"nvim-lualine/lualine.nvim",
 		event = "BufEnter",
-		dependencies = "vim-airline/vim-airline-themes",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("lualine").setup({
+				theme = "sonokai",
+			})
+		end,
+	},
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		event = "BufEnter",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			vim.opt.termguicolors = true
+			require("bufferline").setup({
+				options = {
+					offsets = {
+						{
+							filetype = "NvimTree",
+							text = "File Explorer",
+							text_align = "center",
+							separator = true,
+						},
+					},
+					diagnostics = "nvim_lsp",
+				},
+			})
+		end,
 	},
 	-- 目录树
 	{

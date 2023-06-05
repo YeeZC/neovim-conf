@@ -5,20 +5,7 @@ require("nvim-lsp-installer").setup({
     automatic_installation = true,
 })
 
-local servers = {
-    pyright = require("lsp.config.pyright"),
-    jsonls = require("lsp.config.json"),
-    tsserver = require("lsp.config.ts"),
-    bashls = require("lsp.config.bash"),
-    html = require("lsp.config.html"),
-    cssls = require("lsp.config.css"),
-    emmet_ls = require("lsp.config.common"),
-    yamlls = require("lsp.config.yamlls"),
-    gopls = require("lsp.config.go"),
-    sqlls = require("lsp.config.sqlls"),
-    lua_ls = require("lsp.config.lua"),
-    kotlin_language_server = require("lsp.config.common"),
-}
+local servers = require("config.lsp.servers")
 
 for name, config in pairs(servers) do
     if config ~= nil and type(config) == "table" then

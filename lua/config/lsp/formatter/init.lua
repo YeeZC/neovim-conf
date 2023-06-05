@@ -9,8 +9,9 @@ local util = formatter.util
 formatter.setup({
     -- Enable or disable logging
     logging = true,
+    
     -- Set the log level
     log_level = vim.log.levels.WARN,
     -- All formatter configurations are opt-in
-    filetype = require("lsp.formatter.formatting").format(),
+    filetype = require("config.lsp.formatter.formatting").format(),
 })
