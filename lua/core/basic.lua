@@ -2,7 +2,7 @@ vim.cmd("filetype plugin indent on")
 vim.g.python3_host_prog = require("config.dap.install.python").get_python(false)
 vim.o.termguicolors = true
 vim.o.t_Co = 256
-vim.o.backspace = 2
+-- vim.o.backspace = 2
 vim.opt.compatible = false
 vim.opt.eb = false
 vim.opt.cmdheight = 2
@@ -73,7 +73,7 @@ vim.api.nvim_create_user_command("ConfigUpdate", function()
 				vim.notify("Update neovim config success", "success", {
 					title = "ConfigUpdate",
 				})
-				vim.api.nvim_command("source " .. config_dir .. "/lua/plugins.lua")
+				vim.api.nvim_command("source " .. config_dir .. "/lua/core/plugins.lua")
 				vim.api.nvim_command("Lazy sync")
 				vim.api.nvim_command("source " .. config_dir .. "/init.lua")
 				return
@@ -84,3 +84,5 @@ vim.api.nvim_create_user_command("ConfigUpdate", function()
 		end,
 	})
 end, {})
+
+vim.api.nvim_create_user_command("LazySync", ":Lazy sync<cr>", {})
