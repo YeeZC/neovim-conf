@@ -59,13 +59,13 @@ require("lazy").setup({
 		},
 	},
 	-- 主题管理
-	"flazz/vim-colorschemes",
+	-- "flazz/vim-colorschemes",
 	-- 启动器
 	{ "mhinz/vim-startify", lazy = false },
 	-- 主题颜色
 	{ "sainnhe/sonokai", event = "BufEnter" },
 	-- 注释
-	{ "tpope/vim-commentary", event = "BufEnter" },
+	{ "nvimdev/coman.nvim", event = "BufEnter" },
 	-- 自动闭合
 	{ "spf13/vim-autoclose", event = "BufEnter" },
 	{ "tpope/vim-endwise", event = "BufEnter" },
@@ -79,8 +79,6 @@ require("lazy").setup({
 		end,
 	},
 	{ "junegunn/vim-slash", event = "BufEnter" },
-	{ "junegunn/fzf", dir = "~/.fzf", build = "./install --all", event = "BufEnter" },
-	{ "junegunn/fzf.vim", event = "BufEnter" },
 	{ "tpope/vim-surround", event = "BufEnter" },
 	{ "machakann/vim-sandwich", event = "BufEnter" },
 
@@ -97,6 +95,8 @@ require("lazy").setup({
 		"hrsh7th/nvim-cmp",
 		lazy = false,
 		dependencies = {
+			-- 排序优化
+			"lukas-reineke/cmp-under-comparator",
 			-- Snippet 引擎
 			"hrsh7th/vim-vsnip",
 			-- 补全源
@@ -157,6 +157,11 @@ require("lazy").setup({
 		branch = "release",
 		build = "npm install && npm run compile",
 	},
+	{'akinsho/toggleterm.nvim', version = "*", event="BufEnter", config = function()
+		require("toggleterm").setup({
+			direction = "float",
+		})
+	end}
 }, {
 	defaults = { lazy = true },
 	install = { colorscheme = { "sonokai" } },

@@ -29,7 +29,7 @@ map("n", "<C-d>", ":bd<cr>", opts)
 map("n", "<leader>a", ":cclose<cr>", opts)
 
 -- Floarerm
-map("n", "<C-p>", ":Lspsaga term_toggle<cr>", opts)
+map("n", "<C-p>", ":ToggleTerm<cr>", opts)
 
 -- tabs
 map("n", "[t", ":tabprevious<cr>", opts)
@@ -39,6 +39,10 @@ map("i", "<C-j>", "<down>", opts)
 map("i", "<C-k>", "<up>", opts)
 map("i", "<C-h>", "<left>", opts)
 map("i", "<C-l>", "<right>", opts)
+
+map("n", "gc", ":ComComment<cr>", opts)
+map("x", "gc", ":ComComment<cr>", opts)
+map("n", "<leader>c", ":ComAnnotation<cr>", opts)
 
 vim.cmd([[
     let g:fzf_action = { 'ctrl-e': 'edit' }
