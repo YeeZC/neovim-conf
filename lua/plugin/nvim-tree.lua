@@ -87,6 +87,10 @@ local function on_attach(bufnr)
 end
 
 local function open_nvim_tree(data)
+	if data.file == "" then
+		api.tree.open()
+		return
+	end
 	-- buffer is a directory
 	local directory = vim.fn.isdirectory(data.file) == 1
 
