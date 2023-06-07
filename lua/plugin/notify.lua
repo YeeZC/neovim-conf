@@ -4,7 +4,6 @@ local M = {
 	client_notifs = {},
 	spinner_frames = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" },
 	-- spinner_frames = { "", "󰪞","󰪟","󰪠","󰪡","󰪢","󰪣","󰪤","󰪥"},
-	-- spinner_frames = {  "󰸶", "󰸸", "󰸷", "󰸴", "󰸵"},
 }
 
 function M.get_notif_data(client_id, token)

@@ -27,7 +27,6 @@ function M.setup()
 	}
 
 	local notify = require("plugin/notify")
-	local cmds = { M.get_python(true), M.get_python(false) }
 	local async = require("utils.async")
 	for cmd, items in pairs(deps) do
 		for _, dep in pairs(items) do
@@ -39,8 +38,8 @@ function M.setup()
 						async.run({
 							command = cmd,
 							args = { "-m", "pip", "install", "-i", "https://pypi.tuna.tsinghua.edu.cn/simple", dep },
-							on_exit = function(_, code)
-								if code == 0 then
+							on_exit = function(_, c)
+								if c == 0 then
 									notify.output_notify(
 										dep .. " install success",
 										"PythonCheck",

@@ -58,8 +58,6 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
-	-- 主题管理
-	-- "flazz/vim-colorschemes",
 	-- 启动器
 	{ "mhinz/vim-startify", lazy = false },
 	-- 主题颜色
@@ -78,10 +76,11 @@ require("lazy").setup({
 			require("plugin.incsearch").setup()
 		end,
 	},
+	{ "nvim-pack/nvim-spectre", event = "BufEnter" },
 	{ "junegunn/vim-slash", event = "BufEnter" },
 	{ "tpope/vim-surround", event = "BufEnter" },
 	{ "machakann/vim-sandwich", event = "BufEnter" },
-
+	-- lsp
 	{
 		"neovim/nvim-lspconfig",
 		"williamboman/nvim-lsp-installer",
@@ -114,17 +113,18 @@ require("lazy").setup({
 			{ "hrsh7th/cmp-cmdline", lazy = false }, -- { name = 'cmdline' }
 		},
 	},
-
 	-- telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "kdheepak/lazygit.nvim" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"kdheepak/lazygit.nvim",
+			-- telescope extensions
+			"LinArcX/telescope-env.nvim",
+			"nvim-telescope/telescope-dap.nvim",
+			"nvim-telescope/telescope-ui-select.nvim",
+		},
 	},
-
-	-- telescope extensions
-	"LinArcX/telescope-env.nvim",
-	"nvim-telescope/telescope-dap.nvim",
-	"nvim-telescope/telescope-ui-select.nvim",
 	"onsails/lspkind.nvim",
 	{
 		"nvimdev/lspsaga.nvim",
@@ -157,11 +157,17 @@ require("lazy").setup({
 		branch = "release",
 		build = "npm install && npm run compile",
 	},
-	{'akinsho/toggleterm.nvim', version = "*", event="BufEnter", config = function()
-		require("toggleterm").setup({
-			direction = "float",
-		})
-	end}
+	-- float terminal
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		event = "BufEnter",
+		config = function()
+			require("toggleterm").setup({
+				direction = "float",
+			})
+		end,
+	},
 }, {
 	defaults = { lazy = true },
 	install = { colorscheme = { "sonokai" } },

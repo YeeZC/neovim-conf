@@ -41,48 +41,14 @@ vim.opt.scrolljump = 5
 vim.opt.scrolloff = 3
 vim.opt.modifiable = true
 vim.opt.termguicolors = true
+-- examples for your init.lua
 
-function get_config_dir()
-	local runtimepath = vim.api.nvim_get_option("runtimepath")
-	local config_dir = runtimepath:match("^.-,?(%S+)/.-$")
-	local comma_pos = string.find(config_dir, ",")
-	if comma_pos then
-		return string.sub(config_dir, 1, comma_pos - 1)
-	else
-		return config_dir
-	end
-end
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
-vim.api.nvim_create_user_command("ConfigUpdate", function()
-	-- Get the config directory
-	local config_dir = get_config_dir()
-	-- Check if git is installed
-	local git_installed = vim.fn.executable("git") == 1
-	if not git_installed then
-		print("Error: Git is not installed!")
-		return
-	end
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
 
-	-- Update the config directory
-	local command = string.format("cd %s && git checkout main && git pull", config_dir)
-	require("utils.async").run({
-		command = "sh",
-		args = { "-c", command },
-		on_exit = function(_, code)
-			if code == 0 then
-				vim.notify("Update neovim config success", "success", {
-					title = "ConfigUpdate",
-				})
-				vim.api.nvim_command("source " .. config_dir .. "/lua/core/plugins.lua")
-				vim.api.nvim_command("Lazy sync")
-				vim.api.nvim_command("source " .. config_dir .. "/init.lua")
-				return
-			end
-			vim.notify("Update neovim config failed", "wran", {
-				title = "ConfigUpdate",
-			})
-		end,
-	})
-end, {})
 
-vim.api.nvim_create_user_command("LazySync", ":Lazy sync<cr>", {})
+vim.api.nvim_create_user_command("LazySync",function() vim.api.nvim_command("Lazy sync") end, {})
