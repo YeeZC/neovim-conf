@@ -84,6 +84,11 @@ local function on_attach(bufnr)
 		-- Copy the file
 		vim.fn.system({ "cp", "-R", file_src, file_out })
 	end, opts("copy_file_to"))
+	map("n", "<2-Tab>", api.node.open.preview, opts("Open Preview"))
+	map("n", "V", api.node.open.vertical, opts("Open: Vertical Split"))
+	map("n", "T", api.node.open.tab, opts("Open: New Tab"))
+
+	map("n", "Z", api.node.run.system, opts("Run System"))
 end
 
 local function open_nvim_tree(data)
@@ -156,16 +161,6 @@ require("nvim-tree").setup({
 		adaptive_size = false,
 	},
 })
-
-local function opts(desc)
-	return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-end
-
-map("n", "<2-Tab>", api.node.open.preview, opts("Open Preview"))
-map("n", "V", api.node.open.vertical, opts("Open: Vertical Split"))
-map("n", "T", api.node.open.tab, opts("Open: New Tab"))
-
-map("n", "Z", api.node.run.system, opts("Run System"))
 
 api.events.subscribe(api.events.Event.FileCreated, function(file)
 	vim.cmd("edit " .. file.fname)

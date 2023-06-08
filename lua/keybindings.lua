@@ -53,7 +53,7 @@ vim.cmd([[
 local pluginKeys = {}
 
 -- lsp 回调函数快捷键设置
-pluginKeys.mapLSP = function(mapbuf) end
+pluginKeys.mapLSP = function(_) end
 
 pluginKeys.incsearch = function()
 	-- incsearch
@@ -195,15 +195,14 @@ pluginKeys.telescopeList = {
 -- gitsigns
 pluginKeys.gitsigns_on_attach = function(bufnr)
 	local gs = package.loaded.gitsigns
-
-	local function map(mode, l, r, opt)
+	local keymap = function(mode, l, r, opt)
 		opt = opt or {}
 		opt.buffer = bufnr
 		vim.keymap.set(mode, l, r, opt)
 	end
 
 	-- Navigation
-	map("n", "<leader>gj", function()
+	keymap("n", "<leader>gj", function()
 		if vim.wo.diff then
 			return "]c"
 		end
@@ -213,7 +212,7 @@ pluginKeys.gitsigns_on_attach = function(bufnr)
 		return "<Ignore>"
 	end, { expr = true })
 
-	map("n", "<leader>gk", function()
+	keymap("n", "<leader>gk", function()
 		if vim.wo.diff then
 			return "[c"
 		end
@@ -223,24 +222,24 @@ pluginKeys.gitsigns_on_attach = function(bufnr)
 		return "<Ignore>"
 	end, { expr = true })
 
-	map("n", "<leader>gS", gs.stage_buffer)
-	map("n", "<leader>gu", gs.undo_stage_hunk)
-	map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>")
-	map("n", "<leader>gR", gs.reset_buffer)
-	map("n", "<leader>gp", gs.preview_hunk)
-	map("n", "<leader>gb", function()
+	keymap("n", "<leader>gS", gs.stage_buffer)
+	keymap("n", "<leader>gu", gs.undo_stage_hunk)
+	keymap({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>")
+	keymap("n", "<leader>gR", gs.reset_buffer)
+	keymap("n", "<leader>gp", gs.preview_hunk)
+	keymap("n", "<leader>gb", function()
 		gs.blame_line({ full = true })
 	end)
-	map("n", "<leader>gd", gs.diffthis)
-	map("n", "D", function()
+	keymap("n", "<leader>gd", gs.diffthis)
+	keymap("n", "D", function()
 		gs.diffthis("~")
 	end)
 	-- toggle
-	map("n", "<leader>gtd", gs.toggle_deleted)
-	map("n", "<leader>d", ":Gitsigns toggel_word_diff<CR>")
-	map("n", "<leader>l", gs.toggle_current_line_blame)
+	keymap("n", "<leader>gtd", gs.toggle_deleted)
+	keymap("n", "<leader>d", ":Gitsigns toggel_word_diff<CR>")
+	keymap("n", "<leader>l", gs.toggle_current_line_blame)
 	-- Text object
-	map({ "o", "x" }, "ig", ":<C-U>Gitsigns select_hunk<CR>")
+	keymap({ "o", "x" }, "ig", ":<C-U>Gitsigns select_hunk<CR>")
 end
 
 return pluginKeys

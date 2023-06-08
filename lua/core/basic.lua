@@ -50,5 +50,6 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
-
-vim.api.nvim_create_user_command("LazySync",function() vim.api.nvim_command("Lazy sync") end, {})
+vim.api.nvim_create_user_command("Sync", function()
+	vim.api.nvim_command("Lazy sync")
+end, {})

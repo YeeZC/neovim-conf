@@ -125,7 +125,7 @@ function M.setup()
 		"info",
 		"info", -- map both hint and info to info?
 	}
-	vim.lsp.handlers["window/showMessage"] = function(err, method, params, client_id)
+	vim.lsp.handlers["window/showMessage"] = function(_, method, params, _)
 		vim.notify(method.message, severity[params.type])
 	end
 
@@ -134,7 +134,7 @@ function M.setup()
 
 	dap.listeners.before["event_progressStart"]["progress-notifications"] = function(session, body)
 		notify.output_notify(
-			message,
+			body.message,
 			format_title(body.title, session.config.type),
 			"begin",
 			"dap",
@@ -143,7 +143,7 @@ function M.setup()
 		)
 	end
 
-	dap.listeners.before["event_progressUpdate"]["progress-notifications"] = function(session, body)
+	dap.listeners.before["event_progressUpdate"]["progress-notifications"] = function(_, body)
 		notify.output_notify(
 			format_message(body.message, body.percentage),
 			nil,
@@ -154,7 +154,7 @@ function M.setup()
 		)
 	end
 
-	dap.listeners.before["event_progressEnd"]["progress-notifications"] = function(session, body)
+	dap.listeners.before["event_progressEnd"]["progress-notifications"] = function(_, body)
 		notify.output_notify(
 			body.message and format_message(body.message) or "Complete",
 			nil,

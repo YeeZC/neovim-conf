@@ -26,7 +26,7 @@ function M.setup()
 		[M.get_python(false)] = { "pyright", "black" },
 	}
 
-	local notify = require("plugin/notify")
+	local notify = require("plugin.notify")
 	local async = require("utils.async")
 	for cmd, items in pairs(deps) do
 		for _, dep in pairs(items) do

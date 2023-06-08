@@ -5,7 +5,7 @@ function M.setup()
 end
 
 function M.check_deps()
-	local notify = require("plugin/notify")
+	local notify = require("plugin.notify")
 	local commands = {
 		gopls = "golang.org/x/tools/gopls@latest",
 		goimports = "golang.org/x/tools/cmd/goimports@latest",
