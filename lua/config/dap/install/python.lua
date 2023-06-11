@@ -1,6 +1,13 @@
 local M = {}
 
+-- 获取 python 所在位置
+-- @param venv 是否使用虚拟环境
+-- @return python 所在位置
 function M.get_python(venv)
+	-- 判断是否是 windows 系统
+	if vim.fn.has("win32") == 1 then
+		return M.get_win_python(venv)
+	end
 	if venv and venv == true then
 		local cwd = vim.fn.getcwd()
 		if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
@@ -18,6 +25,26 @@ function M.get_python(venv)
 	else
 		return "/usr/bin/python3"
 	end
+end
+
+function M.get_win_python(venv)
+	if venv and venv == true then
+		local cwd = vim.fn.getcwd()
+		if vim.fn.executable(cwd .. "/venv/Scripts/python.exe") == 1 then
+			return cwd .. "/venv/Scripts/python.exe"
+		elseif vim.fn.executable(cwd .. "/.venv/Scripts/python.exe") == 1 then
+			return cwd .. "/.venv/Scripts/python.exe"
+		end
+	end
+	-- 调用 Get-Command 读取 python.exe 所在位置
+	local cmd = [[powershell -Command "Get-Command python.exe | Select-Object -ExpandProperty Definition"]]
+	local handle = io.popen(cmd)
+	local result = handle:read("*a")
+	handle:close()
+	if result ~= nil then
+		return result
+	end
+	return "C:/Python39/python.exe"
 end
 
 function M.setup()
