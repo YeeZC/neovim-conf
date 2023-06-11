@@ -42,7 +42,7 @@ function M.get_win_python(venv)
 	local result = handle:read("*a")
 	handle:close()
 	if result ~= nil then
-		return result
+		return require("utils.string").trim(result)
 	end
 	return "C:/Python39/python.exe"
 end
