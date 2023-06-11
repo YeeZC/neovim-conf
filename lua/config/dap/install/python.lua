@@ -42,7 +42,7 @@ function M.get_win_python(venv)
 	local result = handle:read("*a")
 	handle:close()
 	if result ~= nil then
-		return require("utils.string").trim(result)
+		return result:gsub("^%s*(.-)%s*$", "%1")
 	end
 	return "C:/Python39/python.exe"
 end
