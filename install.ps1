@@ -50,7 +50,8 @@ $apps = @(
     "wget",
     "gzip",
     "rust",
-    "yarn"
+    "yarn",
+    "sed"
 )
 # 循环安装软件，如果已安装则跳过
 foreach ($app in $apps) {
@@ -102,7 +103,7 @@ foreach ($dep in $node_deps) {
 # 克隆 https://github.com/yeezc/neovim-conf.git 到 ~/AppData/Local/nvim
 Write-Host "Cloning neovim-conf..."
 # 删除已存在的 neovim-conf
-Remove-Item -Recurse -Force $HOME\AppData\Local\nvim
+Remove-Item -Recurse -Force $HOME\AppData\Local\nvim -ErrorAction SilentlyContinue
 git clone --branch main "https://github.com/yeezc/neovim-conf.git" $HOME\AppData\Local\nvim
 Write-Host "neovim-conf cloned."
 
