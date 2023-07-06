@@ -55,16 +55,6 @@ local pluginKeys = {}
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(_) end
 
-pluginKeys.incsearch = function()
-	-- incsearch
-	map("n", "/", "<Plug>(incsearch-forward)", opts)
-	map("n", "?", "<Plug>(incsearch-backward)", opts)
-	map("n", "g/", "<Plug>(incsearch-stay)", opts)
-	map("n", "z/", "<Plug>(incsearch-fuzzy-/)", opts)
-	map("n", "z?", "<Plug>(incsearch-fuzzy-?)", opts)
-	map("n", "zg?", "<Plug>(incsearch-fuzzy-stay)", opts)
-end
-
 -- typescript 快捷键
 pluginKeys.mapTsLSP = function(mapbuf)
 	mapbuf("n", "gs", ":TSLspOrganize<CR>", opts)

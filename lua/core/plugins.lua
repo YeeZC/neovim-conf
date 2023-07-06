@@ -67,15 +67,6 @@ require("lazy").setup({
 	-- 自动闭合
 	{ "spf13/vim-autoclose", event = "BufEnter" },
 	{ "tpope/vim-endwise", event = "BufEnter" },
-	-- search
-	-- 	{
-	-- 		"haya14busa/incsearch-fuzzy.vim",
-	-- 		lazy = false,
-	-- 		dependencies = "haya14busa/incsearch.vim",
-	-- 		config = function()
-	-- 			require("plugin.incsearch").setup()
-	-- 		end,
-	-- 	},
 	{ "nvim-pack/nvim-spectre", event = "BufEnter" },
 	{ "junegunn/vim-slash", event = "BufEnter" },
 	{ "tpope/vim-surround", event = "BufEnter" },
@@ -138,20 +129,32 @@ require("lazy").setup({
 	{ "jose-elias-alvarez/null-ls.nvim", dependencies = "nvim-lua/plenary.nvim" },
 
 	-- git
-	{"lewis6991/gitsigns.nvim", event="BufEnter", dependencies={
-		"petertriho/nvim-scrollbar"
-	}},
-	{"kevinhwang91/nvim-hlslens", event="BufEnter", dependencies={
-		"petertriho/nvim-scrollbar"
-	}},
+	{
+		"lewis6991/gitsigns.nvim",
+		event = "BufEnter",
+		dependencies = {
+			"petertriho/nvim-scrollbar",
+		},
+	},
+	{
+		"kevinhwang91/nvim-hlslens",
+		event = "BufEnter",
+		dependencies = {
+			"petertriho/nvim-scrollbar",
+		},
+	},
 	"kdheepak/lazygit.nvim",
 	-- debug
 	"mfussenegger/nvim-dap",
 	"theHamsta/nvim-dap-virtual-text",
 	"rcarriga/nvim-dap-ui",
-	{'norcalli/nvim-colorizer.lua', event="BufEnter", config=function ()
-		require('colorizer').setup()
-	end},
+	{
+		"norcalli/nvim-colorizer.lua",
+		event = "BufEnter",
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
 	-- treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
