@@ -138,7 +138,12 @@ require("lazy").setup({
 	{ "jose-elias-alvarez/null-ls.nvim", dependencies = "nvim-lua/plenary.nvim" },
 
 	-- git
-	"lewis6991/gitsigns.nvim",
+	{"lewis6991/gitsigns.nvim", event="BufEnter", dependencies={
+		"petertriho/nvim-scrollbar"
+	}},
+	{"kevinhwang91/nvim-hlslens", event="BufEnter", dependencies={
+		"petertriho/nvim-scrollbar"
+	}},
 	"kdheepak/lazygit.nvim",
 	-- debug
 	"mfussenegger/nvim-dap",
