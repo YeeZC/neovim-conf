@@ -68,14 +68,14 @@ require("lazy").setup({
 	{ "spf13/vim-autoclose", event = "BufEnter" },
 	{ "tpope/vim-endwise", event = "BufEnter" },
 	-- search
-	{
-		"haya14busa/incsearch-fuzzy.vim",
-		lazy = false,
-		dependencies = "haya14busa/incsearch.vim",
-		config = function()
-			require("plugin.incsearch").setup()
-		end,
-	},
+	-- 	{
+	-- 		"haya14busa/incsearch-fuzzy.vim",
+	-- 		lazy = false,
+	-- 		dependencies = "haya14busa/incsearch.vim",
+	-- 		config = function()
+	-- 			require("plugin.incsearch").setup()
+	-- 		end,
+	-- 	},
 	{ "nvim-pack/nvim-spectre", event = "BufEnter" },
 	{ "junegunn/vim-slash", event = "BufEnter" },
 	{ "tpope/vim-surround", event = "BufEnter" },
