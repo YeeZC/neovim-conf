@@ -149,7 +149,9 @@ require("lazy").setup({
 	"mfussenegger/nvim-dap",
 	"theHamsta/nvim-dap-virtual-text",
 	"rcarriga/nvim-dap-ui",
-
+	{'norcalli/nvim-colorizer.lua', event="BufEnter", config=function ()
+		require('colorizer').setup()
+	end},
 	-- treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
