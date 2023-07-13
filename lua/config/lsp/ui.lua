@@ -67,7 +67,7 @@ require("lspsaga").setup({
 		force_max_height = false,
 		keys = {
 			jump_to = "p",
-			expand_or_jump = "<cr>",
+			toggle_or_open = "<cr>",
 			vsplit = "s",
 			split = "i",
 			tabe = "t",
@@ -95,7 +95,6 @@ require("lspsaga").setup({
 	},
 	outline = {
 		win_position = "right",
-		win_with = "",
 		win_width = 40,
 		preview_width = 0.4,
 		show_detail = true,
@@ -105,7 +104,7 @@ require("lspsaga").setup({
 		auto_resize = true,
 		custom_sort = nil,
 		keys = {
-			expand_or_jump = "<cr>",
+			toggle_or_open = "<cr>",
 			quit = "q",
 		},
 	},
@@ -141,6 +140,8 @@ require("lspsaga").setup({
 		incoming = " ",
 		outgoing = " ",
 		hover = " ",
+		actionfix = "",
+		imp_sign = "󰳛",
 		kind = {
 			["Folder"] = { " ", "@comment" },
 		},

@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "K", ":Lspsaga hover_doc<CR>", opts)
 		vim.keymap.set("n", "gt", ":Lspsaga goto_type_definition<CR>", opts)
 		vim.keymap.set({ "n", "v" }, "<leader>/", ":Lspsaga code_action<CR>", opts)
-		vim.keymap.set("n", "gr", ":Lspsaga lsp_finder<cr>", opts)
+		vim.keymap.set("n", "gr", ":Lspsaga finder<cr>", opts)
 		vim.keymap.set("n", "<S-f>", function()
 			vim.lsp.buf.format({ async = true })
 		end, opts)
