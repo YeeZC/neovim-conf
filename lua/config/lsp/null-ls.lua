@@ -79,7 +79,21 @@ null_ls.setup({
 		local autocmd = vim.api.nvim_create_autocmd
 		if client.supports_method("textDocument/formatting") then
 			vim.api.nvim_clear_autocmds({ group = myAutoGroup, buffer = bufnr })
-			autocmd("BufWritePre,BufNewFile,BufRead", {
+			autocmd("BufWritePre", {
+				group = myAutoGroup,
+				callback = function()
+					-- vim.lsp.buf.format({ async = true })
+					vim.lsp.buf.format({ bufnr = bufnr })
+				end,
+			})
+			autocmd("BufNewFile", {
+				group = myAutoGroup,
+				callback = function()
+					-- vim.lsp.buf.format({ async = true })
+					vim.lsp.buf.format({ bufnr = bufnr })
+				end,
+			})
+			autocmd("BufRead", {
 				group = myAutoGroup,
 				callback = function()
 					-- vim.lsp.buf.format({ async = true })
