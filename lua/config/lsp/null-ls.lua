@@ -83,21 +83,9 @@ null_ls.setup({
 				group = myAutoGroup,
 				callback = function()
 					-- vim.lsp.buf.format({ async = true })
-					vim.lsp.buf.format({ bufnr = bufnr, async = true })
+					vim.lsp.buf.format({ bufnr = bufnr, async = false })
 				end,
 			})
-			-- autocmd("BufNewFile", {
-			-- 	group = myAutoGroup,
-			-- 	callback = function()
-			-- 		vim.lsp.buf.format({ bufnr = bufnr })
-			-- 	end,
-			-- })
-			-- autocmd("BufRead", {
-			-- 	group = myAutoGroup,
-			-- 	callback = function()
-			-- 		vim.lsp.buf.format({ bufnr = bufnr })
-			-- 	end,
-			-- })
 		end
 
 		-- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format {async = true}' ]])
