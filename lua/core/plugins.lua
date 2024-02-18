@@ -165,7 +165,7 @@ require("lazy").setup({
 	{
 		"golang/vscode-go",
 		branch = "release",
-		build = "npm install && npm run compile",
+		build = "cd extension && npm install && npm run compile",
 	},
 	-- float terminal
 	{
