@@ -126,7 +126,7 @@ require("lazy").setup({
 		},
 	},
 	-- 代码格式化
-	{ "nvimtools/none-ls.nvim", dependencies = "nvim-lua/plenary.nvim" },
+	{ "nvimtools/none-ls.nvim", dependencies = { "nvim-lua/plenary.nvim", "nvimtools/none-ls-extras.nvim" } },
 
 	-- git
 	{

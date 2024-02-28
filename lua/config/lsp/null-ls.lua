@@ -5,8 +5,8 @@ if not status then
 end
 
 local formatting = null_ls.builtins.formatting
-local diagnostics = null_ls.builtins.diagnostics
-local code_actions = null_ls.builtins.code_actions
+-- local diagnostics = null_ls.builtins.diagnostics
+-- local code_actions = null_ls.builtins.code_actions
 
 null_ls.setup({
 	debug = false,
@@ -37,7 +37,7 @@ null_ls.setup({
 		}),
 		-- rustfmt
 		-- rustup component add rustfmt
-		formatting.rustfmt,
+		-- formatting.rustfmt,
 		-- Python
 		-- pip install black
 		-- asdf reshim python
@@ -51,9 +51,10 @@ null_ls.setup({
 		-----------------------------------------------------
 		-- formatting.fixjson,
 		-- Diagnostics  ---------------------
-		diagnostics.eslint.with({
-			prefer_local = "node_modules/.bin",
-		}),
+		-- diagnostics.eslint.with({
+		-- 	prefer_local = "node_modules/.bin",
+		-- }),
+		require("none-ls.diagnostics.eslint"),
 		-- diagnostics.markdownlint,
 		-- markdownlint-cli2
 		-- diagnostics.markdownlint.with({
@@ -64,9 +65,10 @@ null_ls.setup({
 		--
 		-- code actions ---------------------
 		-- code_actions.gitsigns,
-		code_actions.eslint.with({
-			prefer_local = "node_modules/.bin",
-		}),
+		-- code_actions.eslint.with({
+		-- 	prefer_local = "node_modules/.bin",
+		-- }),
+		require("none-ls.code_actions.eslint"),
 	},
 	-- #{m}: message
 	-- #{s}: source name (defaults to null-ls if not specified)
