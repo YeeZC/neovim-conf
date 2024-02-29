@@ -186,6 +186,22 @@ require("lazy").setup({
 			"tpope/vim-fugitive",
 		},
 	},
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		event = "BufEnter",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("treesitter-context").setup()
+		end,
+	},
 }, {
 	defaults = { lazy = true },
 	install = { colorscheme = { "sonokai" } },
