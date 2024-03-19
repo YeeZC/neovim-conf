@@ -115,7 +115,10 @@ return { -- lsp
             }
         })
     end
-}, {
+}, 
+-- lua 增强
+	{ "folke/neodev.nvim", event = "BufEnter" },
+{
     "nvimdev/lspsaga.nvim",
     branch = "main",
     event = "BufEnter",
