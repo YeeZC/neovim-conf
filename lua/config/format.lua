@@ -1,8 +1,6 @@
 return function()
 	local null_ls = require("null-ls")
 	local formatting = null_ls.builtins.formatting
-	local code_actions = null_ls.builtins.code_acctions
-	local completion = null_ls.builtins.completion
 	null_ls.setup({
 		debug = false,
 		sources = { -- Formatting ---------------------
@@ -54,14 +52,12 @@ return function()
 			-- }),
 			--
 			-- code actions ---------------------
-			code_actions.gomodifytags,
 			-- code_actions.gitsigns,
 			-- code_actions.eslint.with({
 			-- 	prefer_local = "node_modules/.bin",
 			-- }),
 			require("none-ls.code_actions.eslint"),
 			-- completion
-			completion.vsnip
 		},
 		-- #{m}: message
 		-- #{s}: source name (defaults to null-ls if not specified)
@@ -72,7 +68,7 @@ return function()
 				clear = true,
 			})
 			local autocmd = vim.api.nvim_create_autocmd
-            local clear = vim.api.nvim_clear_autocmds
+			local clear = vim.api.nvim_clear_autocmds
 			if client.supports_method("textDocument/formatting") then
 				clear({
 					group = myAutoGroup,
@@ -83,10 +79,9 @@ return function()
 					callback = function()
 						-- vim.lsp.buf.format({ async = true })
 						vim.lsp.buf.format({
-                            filter =function (client)
-
-                                return client.name  == "null-ls"
-                            end,
+							filter = function(client)
+								return client.name == "null-ls"
+							end,
 							bufnr = bufnr,
 							async = false,
 						})
