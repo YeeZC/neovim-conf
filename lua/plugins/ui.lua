@@ -3,11 +3,6 @@ return { -- 状态栏
 		"nvim-lualine/lualine.nvim",
 		event = "BufEnter",
 		dependencies = "nvim-tree/nvim-web-devicons",
-		config = function()
-			require("lualine").setup({
-				theme = "sonokai",
-			})
-		end,
 	}, -- tab 栏
 	{
 		"akinsho/bufferline.nvim",
@@ -15,9 +10,9 @@ return { -- 状态栏
 		event = "BufEnter",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config = function()
-			vim.opt.termguicolors = true
 			require("bufferline").setup({
 				options = {
+					themable = true,
 					offsets = {
 						{
 							filetype = "NvimTree",
@@ -29,7 +24,8 @@ return { -- 状态栏
 				},
 			})
 		end,
-	}, -- 目录树
+	},
+	-- 目录树
 	{
 		"nvim-tree/nvim-tree.lua",
 		lazy = false,
@@ -39,5 +35,10 @@ return { -- 状态栏
 	{
 		"mhinz/vim-startify",
 		lazy = false,
+	},
+	{
+		"sontungexpt/stcursorword",
+		event = "VeryLazy",
+		config = true,
 	},
 }

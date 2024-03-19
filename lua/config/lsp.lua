@@ -66,6 +66,7 @@ return {
 				TypeParameter = "",
 				Variable = "",
 				Fragment = "",
+				Copilot = "",
 			},
 		})
 	end,
@@ -83,7 +84,7 @@ return {
 					tabe = "t",
 					tabnew = "r",
 					quit = { "q", "<ESC>" },
-					close_in_preview = "<ESC>",
+					-- close_in_preview = "<ESC>",
 				},
 			},
 			code_action = {
@@ -114,7 +115,7 @@ return {
 				auto_resize = true,
 				custom_sort = nil,
 				keys = {
-					toggle_or_open = "<cr>",
+					toggle_or_jump = "<cr>",
 					quit = "q",
 				},
 			},
@@ -146,7 +147,7 @@ return {
 				winblend = 0,
 				expand = "⏵",
 				collapse = "⏷",
-				code_action = "💡",
+				code_action = "󰌵",
 				incoming = " ",
 				outgoing = " ",
 				hover = " ",

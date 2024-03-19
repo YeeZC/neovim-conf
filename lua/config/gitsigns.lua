@@ -37,8 +37,8 @@ return function()
 		signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
 		-- 行数高亮
 		numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
-		linehl = true, -- Toggle with `:Gitsigns toggle_linehl`
-		word_diff = true, -- Toggle with `:Gitsigns toggle_word_diff`
+		linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+		word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
 		--	keymaps = require("keybindings").gitsigns,
 		watch_gitdir = {
 			interval = 1000,

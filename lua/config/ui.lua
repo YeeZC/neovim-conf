@@ -1,8 +1,16 @@
 vim.cmd("filetype plugin indent on")
--- vim.g.python3_host_prog = require("config.dap.install.python").get_python(false)
+vim.o.background = "dark"
 vim.o.termguicolors = true
--- vim.o.t_Co = 256
+vim.o.t_Co = 256
 -- vim.o.backspace = 2
+-- 右侧参考线，超过表示代码太长了，考虑换行
+vim.wo.colorcolumn = "100"
+-- 边输入边搜索
+vim.o.incsearch = true
+-- 搜索大小写不敏感，除非包含大写
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 vim.opt.compatible = false
@@ -42,12 +50,13 @@ vim.opt.encoding = "utf-8"
 vim.opt.scrolljump = 5
 vim.opt.scrolloff = 3
 vim.opt.modifiable = true
-vim.opt.termguicolors = true
 -- examples for your init.lua
 
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.rainbow_active = 1
+vim.g.rehash256 = 1
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
