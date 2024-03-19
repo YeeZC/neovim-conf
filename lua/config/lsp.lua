@@ -66,6 +66,7 @@ return {
 				TypeParameter = "",
 				Variable = "",
 				Fragment = "",
+				Copilot = "",
 			},
 		})
 	end,
