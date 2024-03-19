@@ -37,6 +37,9 @@ end
 
 function M.output_notify(message, title, kind, cli, token, level)
     level = level or "info"
+	if level == "warn" then
+		return
+	end
     cli = cli or "Notify"
     kind = kind or "report"
     token = token or "this_is_a_token"
@@ -62,7 +65,7 @@ function M.output_notify(message, title, kind, cli, token, level)
             title = title,
             icon = "",
             replace = notif_data.notification,
-            timeout = 1000
+            timeout = 500
         })
 
         notif_data.spinner = nil
