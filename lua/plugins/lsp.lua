@@ -44,19 +44,22 @@ return { -- lsp
             callback = function(ev)
                 -- Enable completion triggered by <c-x><c-o>
                 vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-        
+
                 -- Buffer local mappings.
                 -- See `:help vim.lsp.*` for documentation on any of the below functions
-                local opts = { buffer = ev.buf, silent = true }
+                local opts = {
+                    buffer = ev.buf,
+                    silent = true
+                }
                 vim.keymap.set("n", "gd", ":Lspsaga goto_definition<CR>", opts)
                 vim.keymap.set("n", "K", ":Lspsaga hover_doc<CR>", opts)
                 vim.keymap.set("n", "gt", ":Lspsaga goto_type_definition<CR>", opts)
-                vim.keymap.set({ "n", "v" }, "<leader>/", ":Lspsaga code_action<CR>", opts)
+                vim.keymap.set({"n", "v"}, "<leader>/", ":Lspsaga code_action<CR>", opts)
                 vim.keymap.set("n", "gr", ":Lspsaga finder<cr>", opts)
                 -- vim.keymap.set("n", "<S-f>", function()
                 --     vim.lsp.buf.format({ async = true })
                 -- end, opts)
-            end,
+            end
         })
     end
 }, {
@@ -115,10 +118,11 @@ return { -- lsp
             }
         })
     end
-}, 
--- lua 增强
-	{ "folke/neodev.nvim", event = "BufEnter" },
+}, -- lua 增强
 {
+    "folke/neodev.nvim",
+    event = "BufEnter"
+}, {
     "nvimdev/lspsaga.nvim",
     branch = "main",
     event = "BufEnter",
@@ -136,9 +140,9 @@ return { -- lsp
                     split = "i",
                     tabe = "t",
                     tabnew = "r",
-                    quit = { "q", "<ESC>" },
-                    close_in_preview = "<ESC>",
-                },
+                    quit = {"q", "<ESC>"},
+                    close_in_preview = "<ESC>"
+                }
             },
             code_action = {
                 num_shortcut = true,
@@ -147,15 +151,15 @@ return { -- lsp
                 keys = {
                     -- string | table type
                     quit = "q",
-                    exec = "<CR>",
-                },
+                    exec = "<CR>"
+                }
             },
             lightbulb = {
                 enable = true,
                 enable_in_insert = false,
                 sign = false,
                 sign_priority = 40,
-                virtual_text = true,
+                virtual_text = true
             },
             outline = {
                 win_position = "right",
@@ -169,8 +173,8 @@ return { -- lsp
                 custom_sort = nil,
                 keys = {
                     toggle_or_open = "<cr>",
-                    quit = "q",
-                },
+                    quit = "q"
+                }
             },
             symbol_in_winbar = {
                 enable = true,
@@ -180,19 +184,19 @@ return { -- lsp
                 show_file = true,
                 folder_level = 2,
                 respect_root = false,
-                color_mode = true,
+                color_mode = true
             },
             hover = {
                 max_width = 0.6,
                 open_link = "gx",
-                open_browser = "!chrome",
+                open_browser = "!chrome"
             },
             rename = {
                 quit = "<C-q>",
                 exec = "<CR>",
                 mark = "x",
                 confirm = "<CR>",
-                in_select = true,
+                in_select = true
             },
             ui = {
                 title = true,
@@ -207,9 +211,9 @@ return { -- lsp
                 actionfix = "",
                 imp_sign = "󰳛",
                 kind = {
-                    ["Folder"] = { " ", "@comment" },
-                },
-            },
+                    ["Folder"] = {" ", "@comment"}
+                }
+            }
         })
     end
 }}

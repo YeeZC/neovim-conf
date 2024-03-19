@@ -53,9 +53,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 vim.api.nvim_create_user_command("Sync", function()
-	vim.api.nvim_command("Lazy sync")
+    vim.api.nvim_command("Lazy sync")
 end, {})
-
 
 return function()
     local map = vim.keymap.set
