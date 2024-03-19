@@ -1,11 +1,15 @@
 return function()
-	require("null-ls").setup({
+	local null_ls = require("null-ls")
+	local formatting = null_ls.builtins.formatting
+	local code_actions = null_ls.builtins.code_acctions
+	local completion = null_ls.builtins.completion
+	null_ls.setup({
 		debug = false,
 		sources = { -- Formatting ---------------------
 			--  brew install shfmt
-			require("null-ls").builtins.formatting.shfmt, -- StyLua
-			require("null-ls").builtins.formatting.stylua, -- frontend
-			require("null-ls").builtins.formatting.prettier.with({
+			formatting.shfmt, -- StyLua
+			formatting.stylua, -- frontend
+			formatting.prettier.with({
 				-- 比默认少了 markdown
 				filetypes = {
 					"javascript",
@@ -28,14 +32,14 @@ return function()
 			-- Python
 			-- pip install black
 			-- asdf reshim python
-			require("null-ls").builtins.formatting.black.with({
+			formatting.black.with({
 				extra_args = { "--fast" },
 			}), -----------------------------------------------------
 			-- Ruby
 			-- gem install rubocop
 			-- require("null-ls.builtins.formatting").rubocop,
 			-- golang
-			require("null-ls").builtins.formatting.goimports, -----------------------------------------------------
+			formatting.goimports, -----------------------------------------------------
 			-- require("null-ls.builtins.formatting").fixjson,
 			-- Diagnostics  ---------------------
 			-- diagnostics.eslint.with({
@@ -50,11 +54,14 @@ return function()
 			-- }),
 			--
 			-- code actions ---------------------
+			code_actions.gomodifytags,
 			-- code_actions.gitsigns,
 			-- code_actions.eslint.with({
 			-- 	prefer_local = "node_modules/.bin",
 			-- }),
 			require("none-ls.code_actions.eslint"),
+			-- completion
+			completion.vsnip
 		},
 		-- #{m}: message
 		-- #{s}: source name (defaults to null-ls if not specified)
