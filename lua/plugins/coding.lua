@@ -8,7 +8,8 @@ return {{
     "hrsh7th/cmp-buffer", -- { name = 'buffer' },
     "hrsh7th/cmp-path", -- { name = 'path' }
     "hrsh7th/cmp-nvim-lsp-signature-help", -- { name = 'nvim_lsp_signature_help' }
-    "hrsh7th/cmp-copilot", "hrsh7th/cmp-emoji", -- 常见编程语言代码段
+    -- "hrsh7th/cmp-copilot", 
+    "hrsh7th/cmp-emoji", -- 常见编程语言代码段
     "rafamadriz/friendly-snippets", "b0o/schemastore.nvim", "github/copilot.vim", {
         "hrsh7th/cmp-cmdline",
         lazy = false
@@ -72,3 +73,4 @@ return {{
     cmd = {"Flog", "Flogsplit", "Floggit"},
     dependencies = {"tpope/vim-fugitive"}
 }}
+
