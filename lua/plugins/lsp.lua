@@ -22,23 +22,20 @@ end
 return { -- lsp
 {
     "neovim/nvim-lspconfig",
-    opts = {
-        servers = {
-            pyright = {},
-            jsonls = {},
-            tsserver = {},
-            bashls = {},
-            html = {},
-            cssls = {},
-            emmet_ls = {},
-            yamlls = {},
-            gopls = {},
-            sqlls = {},
-            lua_ls = {},
-            kotlin_language_server = {}
-        }
-    },
     config = function()
+        local lspconfig = require("lspconfig")
+        lspconfig.pyright.setup({})
+        lspconfig.jsonls.setup({})
+        lspconfig.tsserver.setup({})
+        lspconfig.bashls.setup({})
+        lspconfig.html.setup({})
+        lspconfig.cssls.setup({})
+        lspconfig.emmet_ls.setup({})
+        lspconfig.yamlls.setup({})
+        lspconfig.gopls.setup({})
+        lspconfig.sqlls.setup({})
+        lspconfig.lua_ls.setup({})
+        lspconfig.kotlin_language_server.setup({})
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
             callback = function(ev)
