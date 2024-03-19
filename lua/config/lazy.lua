@@ -18,7 +18,7 @@ require("lazy").setup({
 		import = "plugins",
 	} },
 	defaults = {
-		lazy = true,
+		lazy = false,
 	},
 	checker = {
 		enabled = true,

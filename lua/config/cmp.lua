@@ -6,11 +6,11 @@ return function()
 	cmp.setup({
 		sorting = {
 			comparators = {
-				compare.offset,
-				compare.exact,
 				compare.score,
 				uc.under,
 				compare.recently_used,
+				compare.offset,
+				compare.exact,
 				compare.locality,
 				compare.kind,
 				-- compare.sort_text,
@@ -41,7 +41,7 @@ return function()
 			-- For vsnip users.
 			{ name = "vsnip" },
 			{ name = "buffer" },
-			-- { name = "copilot" },
+			{ name = "copilot" },
 			{ name = "emoji" },
 
 			-- For luasnip users.
