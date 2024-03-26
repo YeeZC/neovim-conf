@@ -6,15 +6,19 @@ return {
 	-- melange
 	{ "savq/melange-nvim", lazy = false },
 	-- kanagawa
-	{ "rebelot/kanagawa.nvim", lazy = false, config = function()
-		require('kanagawa').setup({
-			theme = "dragon",              -- Load "wave" theme when 'background' option is not set
-			background = {               -- map the value of 'background' option to a theme
-				dark = "dragon",           -- try "dragon" !
-				light = "lotus"
-			},
-		})
-	end },
+	{
+		"rebelot/kanagawa.nvim",
+		lazy = false,
+		config = function()
+			require("kanagawa").setup({
+				theme = "dragon", -- Load "wave" theme when 'background' option is not set
+				background = { -- map the value of 'background' option to a theme
+					dark = "dragon", -- try "dragon" !
+					light = "lotus",
+				},
+			})
+		end,
+	},
 	-- edge
 	{ "sainnhe/edge", lazy = false },
 	{
